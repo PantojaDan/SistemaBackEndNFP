@@ -15,13 +15,21 @@ router.get('/dashboard',async(req,res)=>{//Creando una ruta llamada /dashboard p
 
 
 router.post('/dashboard',async(req,res)=>{//Creando una ruta para el caso en el que se envie los datos
-    const {nombre_inv} = req.body;
+    const {nombre_inv} = req.body;//ESTO ES PARA ENVIAR LOS DATOS A LA BASE DE DATOS Y DESPUES MOSTRAR LOS INVENTARIOS
     const nuevoInventario = {
         nombre_inv
     };
     await pool.query('INSERT INTO inventario set ?',nuevoInventario);
     res.redirect('/dashboard');
 });
+
+
+
+router.get('/dashboard/eliminar/:id_inventario',async(req,res)=>{//RUTA PARA ELIMINAR LOS INVENTARIOS
+    const {id_inventario} = req.params;
+    await pool.query('DELETE FROM inventario WHERE id_inventario = ?',[id_inventario]);
+    res.redirect('/dashboard');
+})
 
 
 

@@ -178,7 +178,7 @@
     width: 100%;
     height: 40%;
 }
-.actions-list > button{
+.actions-list > a{
     border: 0;
     background-color: transparent;
 }
