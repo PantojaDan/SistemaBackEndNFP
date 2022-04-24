@@ -1,0 +1,317 @@
+.container-dashboard{
+    width: 100vw;
+    height: 100vh;
+    background-color: #e7ebda;
+}
+
+
+
+/*Inicio. Estilos Header*/
+#header-dashboard{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #18171c;
+}
+
+.menu-hamburguer-dash{
+    font-size: 2rem;
+    margin-left: 2rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all ease-in-out 0.2s;
+    border-radius: 0.3rem;
+}
+
+.menu-hamburguer-dash:hover{
+    background-color: #7f7f7f;
+}
+
+#header-dashboard > h1{
+    color: #fff;
+    letter-spacing: 0.5rem;
+}
+
+#section-dashboard{
+    width: 17%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.user-dashboard{
+    font-size: 2.5rem;
+    color: #0099ff;
+}
+
+#section-dashboard b{
+    color: white;
+}
+
+.logout-dashboard{
+    font-size: 1.5rem;
+    padding: 0.3rem 1rem;
+    color: white;
+    cursor: pointer;
+    transition: all ease-out .2s;
+    border-radius: 0.5rem;
+    background-color: #7f7f7f;
+}
+
+.logout-dashboard:hover{
+    background-color: rgb(179, 0, 0);
+}
+/*Fin. Estilos Header*/
+
+
+
+
+
+
+
+/**Inicio. Estilos contenedor inventarios*/
+#section-inv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#titulo-inventarios{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+#titulo-inventarios span{
+    color: var(--color-primary);
+}
+#inventarios{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.inventario{
+    width: 200px;
+    height: 250px;
+    margin: 1rem;
+    border-radius: 5px;
+    background-color: white;
+    transition: all ease-in-out 0.2s;
+}
+.inventario:hover{
+    transform: scale(1.05);
+}
+.img-inv{
+    width: 100%;
+    height: 80%;
+    padding: 1rem;
+}
+.img-inv img{
+    width: 100%;
+    height: 100%;
+}
+.actions-inv{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions-inv span{
+    padding: 0.5rem;
+    margin-right: 0.3rem;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+}
+.actions-inv i{
+    padding: 0.5rem;
+    background-color: var(--color-secondary);
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all ease-in 0.3s;
+}
+.actions-inv > button{
+    background-color: transparent;
+    border: none;
+}
+.actions-inv i:hover{
+    opacity: 1;
+}
+
+.lista{
+    width: 200px;
+    height: 100px;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: white;
+    transition: all ease-in-out 0.2s;
+}
+.lista:hover{
+    transform: scale(1.05);
+}
+.img-list{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-list span{
+    color: #7f7f7f;
+    font-weight: 900;
+}
+.actions-list{
+    width: 100%;
+    height: 40%;
+}
+.actions-list > button{
+    border: 0;
+    background-color: transparent;
+}
+.actions-list i{
+    padding: 0.5rem;
+    font-size: 1.2em;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all ease-in 0.3s;
+}
+.actions-list .fa-trash-can{
+    background-color: rgba(255, 0, 0, 0.774);
+}
+.actions-list .fa-eye{
+    background-color: var(--color-secondary);
+}
+.actions-list i:hover{
+    opacity: 1;
+}
+/*Fin. Estilos contenedor invenatarios*/
+
+
+
+
+/*Inicio. Estilos menu-hamburguer*/
+.menu-dashboard{
+    width: 150px;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #18171c;
+    transition: all ease-in-out 0.3s;
+}
+.hide-menu{
+    transform: translateX(-100%);
+}
+.show-menu{
+    transform: translateX(0);
+}
+#nav-dash{
+    list-style: none;
+    padding: 3rem 0;
+}
+#nav-dash li{
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.404);
+    transition: all ease 0.2s;
+}
+#nav-dash li:hover{
+    background-color: rgba(127, 127, 127, 0.404);
+}
+#nav-dash a{
+    text-decoration: none;
+    color: white;
+}
+/*Fin. Estilos menu-hamburguer*/
+
+
+/*Inicio. Estilos crear inventario*/
+.mostrar-agregar-inv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ocultar-agregar-inv{
+    display: none;
+}
+.container-agregar-inv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.form-inv{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-inv form > span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    background-color: #18171c;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    margin: 0.3rem;
+    border-radius: 5px;
+}
+.form-inv > form{
+    width: 85%;
+    height: 80%;
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.form-inv label{
+    font-size: 1.2rem;
+    color: #18171c;
+    margin-bottom: 1rem;
+}
+.form-inv input{
+    outline: none;
+    padding: 0.5rem;
+    width: 80%;
+    color: #7f7f7f;
+    font-size: 1rem;
+    border: 1px solid rgba(24, 23, 28, 0.466);
+    margin-bottom: 1rem;
+}
+.form-inv button{
+    width: 40%;
+    padding: 0.4rem;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+/*Fin. Estilos crear inventario*/

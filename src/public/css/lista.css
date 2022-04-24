@@ -1,0 +1,272 @@
+body{
+    background-color: #e7ebda;
+}
+
+
+
+
+
+
+/*Inicio. Modal eliminar*/
+.ocultar-modal-lista{
+    display: none;
+}
+
+.mostrar-modal-lista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-eliminar-lista{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-eliminar-lista form{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: white;
+}
+.modal-eliminar-lista form i{
+    align-self: center;
+    font-size: 8rem;
+    color: rgba(255, 208, 0, 0.973);
+    margin-bottom: 1rem;
+}
+.modal-eliminar-lista form b{
+    font-size: 1.2rem;
+    font-weight: 100;
+    text-align: center;
+}
+.modal-eliminar-lista form p{
+    text-align: center;
+    margin-top: 1rem;
+    color: #7f7f7f;
+    margin-bottom: 1rem;
+}
+.modal-eliminar-lista form button{
+    width: 100px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    align-self: center;
+    border: 0;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.774);
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*Fin. Modal eliminar*/
+
+
+
+
+
+
+
+
+/*Inicio. Modal Lista*/
+.mostrar-lista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ocultar-lista{
+    display: none;
+}
+
+.modal-lista{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-lista{
+    width: 450px;
+    height: 490px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-lista-add{
+    width: 95%;
+    height: 95%;
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 5px;
+    justify-content: center;
+    overflow: hidden;
+}
+.form-lista-add > label{
+    font-size: 1.2rem;
+    color: #1d1d1d;
+    margin-bottom: 1rem;
+}
+.form-lista-add > input{
+    outline: none;
+    padding: 0 0.5rem 0.5rem 0;
+    width: 100%;
+    color: #7f7f7f;
+    font-size: 1.2rem;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+#close-modal-lista{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#button-lista{
+    width: 40%;
+    border: 2px solid var(--color-secondary);
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    margin-top: 1rem;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+#button-lista:hover{
+    background-color: transparent;
+    color: var(--color-secondary);
+}
+/*Fin. Moddl Lista*/
+
+
+
+
+
+
+
+/*Inicio. Header Lista*/
+#header-lista{
+    width: 100%;
+    background-color: #18171c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.fa-angle-left{
+    font-size: 2rem;
+    align-self: center;
+    color: white;
+    margin-left: 1rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    transition: all ease 0.2s;
+}
+.fa-angle-left:hover{
+    background-color: #7f7f7f;
+}
+#options-lista{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#options-lista h1{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    color: white;
+}
+#options-lis{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem;
+}
+#options-lis > li{
+    padding: 0.5rem;
+    color: white;
+    transition: all ease-in-out 0.2s;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+#options-lis li:hover{
+    background-color: var(--color-primary);
+}
+#options-lis li i{
+    margin-right: 0.5rem;
+}
+#options-lis i{
+    font-size: 1.5rem;
+}
+.fa-circle-plus{
+    color: rgba(50, 206, 50, 0.897);
+    transition: all ease-in-out .2s;
+}
+#options-lis li:hover .fa-circle-plus{
+    color: white;
+}
+/*Fin. Header lista*/
+
+
+
+
+.productos-lista{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.productos-lista table{
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.08);
+}
+.productos-lista table thead th{
+    text-align: left;
+}
+.productos-lista table th{
+    padding: 0.5rem;
+}
+.productos-lista table tbody th{
+    font-weight: 100;
+    color: #7f7f7f;
+}
+#actions-pro-lista .fa-rotate{
+    padding: 0.4rem;
+    background-color: rgba(0, 0, 255, 0.658);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#actions-pro-lista .fa-trash-can{
+    padding: 0.4rem;
+    background-color: rgba(255, 0, 0, 0.774);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -1,0 +1,70 @@
+<div class="container-agregar-inv ocultar-agregar-inv">
+        <div class="form-inv">
+            <form action="/dashboard" method="post">
+                <span id="close-modal-inv">X</span>
+                <label for="nombre-inventario">Nombre inventario</label>
+                <input type="text" name="nombre_inv" placeholder="Nombre inventario">
+                
+                <button>Crear</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-dashboard hide-menu">
+        <ul id="nav-dash">
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Soporte</a></li>
+            <li id="agregar-lista"><a href="#">Agregar lista</a></li>
+        </ul>
+    </div>
+    <main class="container-dashboard">
+        
+        <header id="header-dashboard">
+            <i class="fa-solid fa-bars menu-hamburguer-dash"></i>
+            <h1>NutryFoodPantry</h1>
+            <section id="section-dashboard">
+                <i class="fa-solid fa-circle-user user-dashboard"></i>
+                <b>Pantoja2001</b>
+                <a href="#"><i class="fa-solid fa-right-from-bracket logout-dashboard"></i></a>
+            </section>
+        </header>
+
+        <section id="section-inv">
+    
+            <h3 id="titulo-inventarios">Bienvenido <span>Pantoja2001</span></h3>
+            
+
+            <div id="inventarios">
+
+                <form action="#" class="inventario">
+                    <div class="img-inv"><img src="./img/despensa.png" alt="despensa"></div>
+                    <div class="actions-inv">
+                        <span>Mi Cocina</span>
+                        <button><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                </form>
+
+                <!--<form action="#" class="inventario">
+                    <div class="img-inv"><img src="./img/caducado.png" alt="despensa"></div>
+                    <div class="actions-inv">
+                        <span>Productos Caducados</span>
+                        <button><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                </form>-->
+
+                {{#each inventarios}}
+                    <form action="#" class="lista">
+                        <div class="img-list"><span>{{nombre_inv}}</span></div>
+                        <div class="actions-list">
+                            <button><i class="fa-regular fa-trash-can"></i></button>
+                            <button><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                    </form>
+                {{/each}}
+
+            </div>
+    
+        </section>
+
+    </main>
