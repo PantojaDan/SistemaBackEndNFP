@@ -1,0 +1,23 @@
+<div class="modal-lista mostrar-lista"><!--Ahorita lo oculto-->
+        <div class="form-lista">
+            
+            <form action="/dashboard/lista/{{id_inventario}}/editar/{{id_producto}}" class="form-lista-add" method="post">
+                <span id="close-modal-lista">X</span>
+                <label for="nombre_pro">Nombre del producto:</label>
+                <input type="text" name="nombre_pro" value="{{nombre_pro}}">
+    
+                <label for="cantidad">Cantidad:</label>
+                <input type="text" name="cantidad" value="{{cantidad}}">
+
+                <label for="cantidad_min">Cantidad minima:</label>
+                <input type="text" name="cantidad_min" value="{{cantidad_min}}">
+
+                <label for="fecha_caducidad">Fecha caducidad:</label>
+                <input type="text" name="fecha_caducidad" id="fecha-lista" value="{{fecha_caducidad}}">
+
+                
+                <button id="button-lista">Agregar</button>
+            
+            </form>
+        </div>
+    </div>

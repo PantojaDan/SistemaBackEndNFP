@@ -75,5 +75,32 @@ router.get('/dashboard/lista/:id_inventario/:id_producto',async(req,res)=>{
 });
 
 
+//AQUI ME QUEDE, CREO ES CONVENIENTE CREAR UNA INTERFAZ ESPECIALMENTE PARA EDITAR
+router.get('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)=>{
+    const {id_producto} = req.params;
+    const getProducto = await pool.query('SELECT *FROM producto WHERE id_producto = ?',id_producto);
+    const {nombre_pro,cantidad_min,cantidad,fecha_caducidad,id_inventario} = getProducto[0];
+    res.render('dashboard/edit_producto',{nombre_pro,cantidad,cantidad_min,fecha_caducidad,id_producto,id_inventario});
+});
+
+
+//ACTUALIZANDO LOS DATOS, SE ENVIAN LOS DATOS
+router.post('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)=>{
+    const {id_inventario,id_producto} = req.params;
+    const {nombre_pro,cantidad_min,cantidad,fecha_caducidad} = req.body;
+
+    const updatedProducto = {
+        nombre_pro,
+        cantidad_min,
+        cantidad,
+        fecha_caducidad,
+        id_inventario
+    }
+    await pool.query('UPDATE producto set ? WHERE id_producto = ?',[updatedProducto,id_producto]);
+
+    res.redirect('/dashboard/lista/'+id_inventario);
+});
+
+
 
 module.exports = router;//Exportando el router

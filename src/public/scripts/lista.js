@@ -2,7 +2,7 @@ const modalLista =  document.querySelector('.modal-lista');
 const alertModalEliminar = document.querySelector('.modal-eliminar-lista');
 
 const btnAddProLista = document.querySelector('.add-pro-lista');
-const btnUpdatePro = document.querySelector('.updated-pro');
+//const btnUpdatePro = document.querySelector('.updated-pro');
 const btnDeletePro = document.querySelector('.delete-pro');
 
 const btnCloseLista = document.querySelector('#close-modal-lista');
@@ -30,9 +30,9 @@ btnCloseLista.addEventListener('click',()=>{
     modalLista.classList.add('ocultar-lista');
 });
 
-btnUpdatePro.addEventListener('click',e=>{
+/*btnUpdatePro.addEventListener('click',e=>{
     toggle();
-});
+});*/
 
 btnDeletePro.addEventListener('click',()=>{
     if(alertModalEliminar.classList.contains('ocultar-modal-lista')){
