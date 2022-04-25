@@ -1,0 +1,71 @@
+
+    
+    <div class="modal-lista ocultar-lista"><!--Ahorita lo oculto-->
+        <div class="form-lista">
+            
+            <form action="/dashboard/lista/{{idInventario}}" class="form-lista-add" method="post">
+                <span id="close-modal-lista">X</span>
+                <label for="nombre_pro">Nombre del producto:</label>
+                <input type="text" name="nombre_pro">
+
+                <label for="cantidad">Cantidad:</label>
+                <input type="text" name="cantidad">
+
+                <label for="cantidad_min">Cantidad minima:</label>
+                <input type="text" name="cantidad_min">
+
+                <label for="fecha_caducidad">Fecha caducidad:</label>
+                <input type="text" name="fecha_caducidad" id="fecha-lista">
+
+                
+                <button id="button-lista">Agregar</button>
+            
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="modal-eliminar-lista ocultar-modal-lista">
+        <form action="/dashboard/lista/eliminar/{{idInventario}}" method="post">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <b>Usted esta a punto de eliminar un producto</b>
+            <p>¿Desea eliminarlo?</p>
+            <button>Eliminar</button>
+        </form>
+    </div>
+
+
+    <header id="header-lista">
+        <a href="/dashboard"><i class="fa-solid fa-angle-left"></i></a>
+
+        <aside id="options-lista">
+            
+            <h1>{{nombreInventario}}</h1>
+
+            <ul id="options-lis">
+                <li class="add-pro-lista"><i class="fa-solid fa-circle-plus"></i>Agregar producto</li>
+            </ul>
+        </aside>
+    </header>
+
+    <main class="productos-lista">
+        <table>
+            <thead>
+                <tr><th>Nombre</th> <th>Cantidad</th> <th>Acciones</th> <th>Estado</th></tr>
+            </thead>
+
+            <tbody>
+                {{#each productos}}
+                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}}</th> <th id="actions-pro-lista"> <i class="fa-solid fa-rotate updated-pro"></i> <a href="/dashboard/lista/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a></th> <th>Adquirido</th></tr>
+                
+                {{else}}
+
+                    <div id="mnsg-add-pro-none">
+                        <b>No hay productos actualmente</b>
+                    </div>
+
+                {{/each}}
+            </tbody>
+        </table>
+    </main>

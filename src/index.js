@@ -42,8 +42,7 @@ app.use((req,res,next)=>{//Dejamos listo un middleware que toma un request,un re
 //Routes. Se define las rutas o urls del servidor
 app.use(require('./routes'));//Le decimos que necesitamos el index.js dentro de la carpeta routes. Basicamente estamos importando ese archivo
 app.use(require('./routes/dashboard'));
-app.use('/dashboard',require('./routes/lista'));//Importamos el archivo lista.js que acabamos de crear
-app.use('/dashboard',require('./routes/micocina'))
+app.use('/dashboard',require('./routes/micocina'));
 
 
 

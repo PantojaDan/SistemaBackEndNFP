@@ -7,6 +7,7 @@ const btnDeletePro = document.querySelector('.delete-pro');
 
 const btnCloseLista = document.querySelector('#close-modal-lista');
 
+
 function toggle(){
     if(modalLista.classList.contains('ocultar-lista')){
         modalLista.classList.remove('ocultar-lista');

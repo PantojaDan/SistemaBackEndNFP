@@ -315,3 +315,47 @@
     cursor: pointer;
 }
 /*Fin. Estilos crear inventario*/
+
+
+
+
+/*Inicio.Estilos mensaje no inventarios*/
+.sin-inv{
+    width: 250px;
+    height: 150px;
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    transition: all ease-in-out 0.2s;
+}
+.sin-inv:hover{
+    transform: scale(1.05);
+}
+.sin-inv > i{
+    font-size: 2rem;
+}
+#mnsg-sin-inv{
+    color: #18171c;
+    margin-top: 1rem;
+}
+#add-sin-inv{
+    width: 60px;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 3px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: white;
+    margin-top: 1rem;
+    transition: all ease-in-out 0.2s;
+}
+#add-sin-inv:hover{
+    color: var(--color-secondary);
+    background-color: transparent;
+}
+/*Fin.Estilos mensaje no inventarios*/

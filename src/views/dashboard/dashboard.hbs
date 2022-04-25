@@ -58,9 +58,18 @@
                         <div class="img-list"><span>{{nombre_inv}}</span></div>
                         <div class="actions-list">
                             <a href="/dashboard/eliminar/{{id_inventario}}"><i class="fa-regular fa-trash-can"></i></a>
-                            <a href="#"><i class="fa-regular fa-eye"></i></a>
+                            <a href="/dashboard/lista/{{id_inventario}}"><i class="fa-regular fa-eye"></i></a>
                         </div>
                     </form>
+
+                {{else}}
+
+                    <div class="sin-inv">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <b id="mnsg-sin-inv">Aún no se han agregado listas</b>
+                        <a href="/dashboard" id="add-sin-inv">Crear</a>
+                    </div>
+
                 {{/each}}
 
             </div>

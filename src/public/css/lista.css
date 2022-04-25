@@ -145,14 +145,17 @@ body{
 #button-lista{
     width: 40%;
     border: 2px solid var(--color-secondary);
+    border-radius: 5px;
     padding: 0.5rem;
     font-size: 1.2rem;
     color: white;
     align-self: center;
+    text-align: center;
     margin-top: 1rem;
     background-color: var(--color-secondary);
     cursor: pointer;
     transition: all ease-in-out 0.2s;
+    text-decoration: none;
 }
 
 #button-lista:hover{
@@ -269,4 +272,24 @@ body{
     color: white;
     border-radius: 50%;
     cursor: pointer;
+}
+
+
+
+#mnsg-add-pro-none{
+    position: absolute;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+#mnsg-add-pro-none b{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    color: white;
 }
