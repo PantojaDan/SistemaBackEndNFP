@@ -1,9 +1,9 @@
 const modalLista =  document.querySelector('.modal-lista');
-const alertModalEliminar = document.querySelector('.modal-eliminar-lista');
+//const alertModalEliminar = document.querySelector('.modal-eliminar-lista');
 
 const btnAddProLista = document.querySelector('.add-pro-lista');
 //const btnUpdatePro = document.querySelector('.updated-pro');
-const btnDeletePro = document.querySelector('.delete-pro');
+//const btnDeletePro = document.querySelector('.delete-pro');
 
 const btnCloseLista = document.querySelector('#close-modal-lista');
 
@@ -34,17 +34,17 @@ btnCloseLista.addEventListener('click',()=>{
     toggle();
 });*/
 
-btnDeletePro.addEventListener('click',()=>{
+/*btnDeletePro.addEventListener('click',()=>{
     if(alertModalEliminar.classList.contains('ocultar-modal-lista')){
         alertModalEliminar.classList.remove('ocultar-modal-lista');
         alertModalEliminar.classList.add('mostrar-modal-lista');
     }
-});
+});*/
 
-alertModalEliminar.addEventListener('click',e=>{
+/*alertModalEliminar.addEventListener('click',e=>{
     e.preventDefault();
     if(e.target.classList.contains('modal-eliminar-lista')){
         alertModalEliminar.classList.remove('mostrar-modal-lista');
         alertModalEliminar.classList.add('ocultar-modal-lista');
     }
-});
+});*/

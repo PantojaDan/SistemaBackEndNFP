@@ -20,6 +20,7 @@ router.post('/dashboard',async(req,res)=>{//Creando una ruta para el caso en el 
         nombre_inv
     };
     await pool.query('INSERT INTO inventario set ?',nuevoInventario);
+    req.flash('success','Inventario creado exitosamente');
     res.redirect('/dashboard');
 });
 
@@ -28,6 +29,7 @@ router.post('/dashboard',async(req,res)=>{//Creando una ruta para el caso en el 
 router.get('/dashboard/eliminar/:id_inventario',async(req,res)=>{//RUTA PARA ELIMINAR LOS INVENTARIOS
     const {id_inventario} = req.params;
     await pool.query('DELETE FROM inventario WHERE id_inventario = ?',[id_inventario]);
+    req.flash('success','Inventario eliminado exitosamente');
     res.redirect('/dashboard');//AQUI ME QUEDE PARA EL DASHBOARD
 })
 
@@ -62,6 +64,7 @@ router.post('/dashboard/lista/:id_inventario',async(req,res)=>{
     };
     
     await pool.query('INSERT INTO producto set ?',nuevoProducto);
+    req.flash('success','Producto agregado exitosamente');
     res.redirect('/dashboard/lista/'+ id_inventario);
 });
 
@@ -71,6 +74,7 @@ router.post('/dashboard/lista/:id_inventario',async(req,res)=>{
 router.get('/dashboard/lista/:id_inventario/:id_producto',async(req,res)=>{
     const {id_inventario,id_producto} = req.params;
     await pool.query('DELETE FROM producto WHERE id_producto = ?',[id_producto]);
+    req.flash('success','Producto eliminado exitosamente');
     res.redirect('/dashboard/lista/'+ id_inventario);
 });
 
@@ -97,7 +101,7 @@ router.post('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)
         id_inventario
     }
     await pool.query('UPDATE producto set ? WHERE id_producto = ?',[updatedProducto,id_producto]);
-
+    req.flash('success','Producto actualizado exitosamente');
     res.redirect('/dashboard/lista/'+id_inventario);
 });
 

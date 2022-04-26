@@ -3,6 +3,12 @@ const express = require('express');//Se importa el modulo express
 const morgan = require('morgan');//Se importa el modulo morgan. Es para mostrar en consola las peticiones que se realizan por parte del cliente
 const {engine} = require('express-handlebars');//Se inicializa el modulo handlebars para las plantillas html
 const path  = require('path');//Se inicializa un modulo para especificar la carpeta de main
+const flash =  require('connect-flash');//Se importa el modulo connect-flash
+const session = require('express-session');//Se importa el modulo para sessiones
+const MySQLStore = require('express-mysql-session');
+const { database } = require('./keys');
+
+
 
 /*Inicializaciones*/
 const app = express(); //Se ejecuta express y devuelve un objeto y lo almacenamos en app
@@ -27,6 +33,13 @@ app.set('view engine','.hbs');//Paso 40. Utilizando el motor de plantillas
 app.use(morgan('dev'));//Inicializamos morgan, y le pasamos el parametro 'dev' que es el tipo de mensaje que va a mostrar
 app.use(express.urlencoded({extended: false}));//Es para acpetar los datos sencillos y no imagenes que me envien los usuarios desde formularios
 app.use(express.json());//Es para envuar json por parte de los clientes
+app.use(session({
+    secret: 'sessiondaniel',
+    resave: false,//Para que no se renueve la sesion
+    saveUninitialized: false,//Para que no vuelva a restablecer la sesion
+    store: new MySQLStore(database)//Donde se va a guardar las sesiones
+}));
+app.use(flash());
 
 
 
@@ -34,6 +47,7 @@ app.use(express.json());//Es para envuar json por parte de los clientes
 app.use((req,res,next)=>{//Dejamos listo un middleware que toma un request,un response y next, al ejecutarlo voy a seguir en esta funcion
     //Esta funcion, toma la informacion del usuario, toma lo que el servidor va a responder y tambien toma una funcion para continuar con el resto del codigo
     
+    app.locals.success = req.flash('success');
     next();
 })
 
