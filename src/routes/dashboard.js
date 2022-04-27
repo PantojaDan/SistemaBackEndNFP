@@ -10,7 +10,13 @@ const {estaLogeado} = require('../lib/auth');//Importamos la funcion del archivo
 
 router.get('/dashboard',estaLogeado,async(req,res)=>{//Creando una ruta llamada /dashboard para mostrar la interfaz metodo get
     const inventarios = await pool.query('SELECT * FROM inventario WHERE id_usuario = ?',[req.user.id_usuario]);
-    res.render('dashboard/dashboard',{inventarios});
+    const miCocina = await pool.query('SELECT * FROM inventario WHERE nombre_inv = ? and id_usuario = ?',['Mi Cocina',req.user.id_usuario]);//Seleccionamos el invenatrio comun Mi Cocina
+    
+    listas = inventarios.filter(inventario => inventario.nombre_inv != "Mi Cocina");
+
+    console.log(listas);
+
+    res.render('dashboard/dashboard',{listas, miCocina});
 });
 
 

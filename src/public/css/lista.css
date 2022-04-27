@@ -276,7 +276,7 @@ body{
 
 
 
-#mnsg-add-pro-none{
+.mnsg-add-pro-none{
     position: absolute;
     top: 40%;
     display: flex;
@@ -286,7 +286,7 @@ body{
     padding: 1rem;
 }
 
-#mnsg-add-pro-none b{
+.mnsg-add-pro-none b{
     text-decoration: none;
     padding: 0.5rem 1rem;
     background-color: var(--color-primary);

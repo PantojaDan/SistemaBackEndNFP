@@ -38,14 +38,16 @@
             
 
             <div id="inventarios">
-
-                <form action="#" class="inventario">
-                    <div class="img-inv"><img src="./img/despensa.png" alt="despensa"></div>
-                    <div class="actions-inv">
-                        <span>Mi Cocina</span>
-                        <button><i class="fa-regular fa-eye"></i></button>
-                    </div>
-                </form>
+                
+                {{#each miCocina}}
+                    <form action="" class="inventario">
+                        <div class="img-inv"><img src="./img/despensa.png" alt="despensa"></div>
+                        <div class="actions-inv">
+                            <span>{{nombre_inv}}</span>
+                            <a href="/dashboard/micocina/{{id_inventario}}"><i class="fa-regular fa-eye"></i></a>
+                        </div>
+                    </form>
+                {{/each}}
 
                 <!--<form action="#" class="inventario">
                     <div class="img-inv"><img src="./img/caducado.png" alt="despensa"></div>
@@ -55,7 +57,7 @@
                     </div>
                 </form>-->
 
-                {{#each inventarios}}
+                {{#each listas}}
                     <form action="#" class="lista">
                         <div class="img-list"><span>{{nombre_inv}}</span></div>
                         <div class="actions-list">

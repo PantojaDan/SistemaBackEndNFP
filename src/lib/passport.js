@@ -55,6 +55,15 @@ passport.use('local.signup', new LocalStrategy({
 
     nuevoUsuario.id_usuario = result.insertId;
 
+    //Ingresamos el invenatario por default llamdo Mi Cocina. Creamos el objeto
+    const inventarioMiCocina = {
+        nombre_inv: 'Mi Cocina',
+        id_usuario: nuevoUsuario.id_usuario
+    }
+
+    //Insertamos ese objeto en la tabla inventario
+    await pool.query('INSERT INTO inventario SET ?',[inventarioMiCocina]);
+
     return done(null,nuevoUsuario);//Es para terminar el proceso de autenticacion a traves del callback done(), este recibe como parametro un error lo cual no hay 'null'..... y los datos del suaurio para almacenarlo en una session 'newUser'
 }));
 
