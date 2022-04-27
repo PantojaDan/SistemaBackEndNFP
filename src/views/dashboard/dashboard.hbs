@@ -21,18 +21,20 @@
     <main class="container-dashboard">
         
         <header id="header-dashboard">
-            <i class="fa-solid fa-bars menu-hamburguer-dash"></i>
-            <h1>NutryFoodPantry</h1>
-            <section id="section-dashboard">
-                <i class="fa-solid fa-circle-user user-dashboard"></i>
-                <b>Pantoja2001</b>
-                <a href="#"><i class="fa-solid fa-right-from-bracket logout-dashboard"></i></a>
-            </section>
+            {{#if user}}
+                <i class="fa-solid fa-bars menu-hamburguer-dash"></i>
+                <h1>NutryFoodPantry</h1>
+                <section id="section-dashboard">
+                    <i class="fa-solid fa-circle-user user-dashboard"></i>
+                    <b>{{user.nombre_us}}</b>
+                    <a href="/logout"><i class="fa-solid fa-right-from-bracket logout-dashboard"></i></a>
+                </section>
+            {{/if}}
         </header>
 
         <section id="section-inv">
     
-            <h3 id="titulo-inventarios">Bienvenido <span>Pantoja2001</span></h3>
+            <h3 id="titulo-inventarios">Bienvenido <span>{{user.nombre_us}}</span></h3>
             
 
             <div id="inventarios">

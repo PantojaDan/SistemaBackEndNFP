@@ -7,11 +7,13 @@ const flash =  require('connect-flash');//Se importa el modulo connect-flash
 const session = require('express-session');//Se importa el modulo para sessiones
 const MySQLStore = require('express-mysql-session');
 const { database } = require('./keys');
+const passport = require('passport');//Importamos passport
 
 
 
 /*Inicializaciones*/
 const app = express(); //Se ejecuta express y devuelve un objeto y lo almacenamos en app
+require('./lib/passport');
 
 
 
@@ -40,6 +42,8 @@ app.use(session({
     store: new MySQLStore(database)//Donde se va a guardar las sesiones
 }));
 app.use(flash());
+app.use(passport.initialize());//Inicializando passport
+app.use(passport.session());//Con esto decimos que los datos los va a guardar en sesiones
 
 
 
@@ -48,6 +52,9 @@ app.use((req,res,next)=>{//Dejamos listo un middleware que toma un request,un re
     //Esta funcion, toma la informacion del usuario, toma lo que el servidor va a responder y tambien toma una funcion para continuar con el resto del codigo
     
     app.locals.success = req.flash('success');
+
+    app.locals.message = req.flash('message');
+    app.locals.user = req.user;
     next();
 })
 

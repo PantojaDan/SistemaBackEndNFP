@@ -10,7 +10,7 @@
     padding-top: .3rem;
 }
 
-main{
+#main-signin{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ main{
     flex-direction: column;
 }
 
-main > h1{
+#main-signin > h1{
     margin: 6rem 0 2rem 0;
     color: #fff;
 }
@@ -61,6 +61,15 @@ main > h1{
     font-size: 16px;
     color: #7f7f7f;
 }
+#form button{
+    width: 250px;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.4rem 0.4rem 0rem;
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    color: #7f7f7f;
+}
 #form label {
     color: #7f7f7f;
     font-weight: 900;
@@ -71,7 +80,7 @@ main > h1{
     justify-content: flex-end;
     margin-top: 1.2rem;
 }
-#form input[type="button"]{
+#form #button button{
     background-color: var(--color-secondary);
     border: 2px solid var(--color-secondary);
     width: 100px;
@@ -80,7 +89,7 @@ main > h1{
     cursor: pointer;
     transition: all ease-in 0.2s;
 }
-#form input[type="button"]:hover{
+#form #button button:hover{
     background-color: white;
     color: var(--color-secondary);
 }

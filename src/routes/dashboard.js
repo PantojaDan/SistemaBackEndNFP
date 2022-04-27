@@ -4,20 +4,22 @@ const router = express.Router();//Solo especificamos que queremos su modulo llam
 
 
 const pool = require('../database');//Importando la conexion a la DB
+const {estaLogeado} = require('../lib/auth');//Importamos la funcion del archivo auth.js para proteger rutas
 
 
 
-router.get('/dashboard',async(req,res)=>{//Creando una ruta llamada /dashboard para mostrar la interfaz metodo get
-    const inventarios = await pool.query('SELECT * FROM inventario');
+router.get('/dashboard',estaLogeado,async(req,res)=>{//Creando una ruta llamada /dashboard para mostrar la interfaz metodo get
+    const inventarios = await pool.query('SELECT * FROM inventario WHERE id_usuario = ?',[req.user.id_usuario]);
     res.render('dashboard/dashboard',{inventarios});
 });
 
 
 
-router.post('/dashboard',async(req,res)=>{//Creando una ruta para el caso en el que se envie los datos
+router.post('/dashboard',estaLogeado,async(req,res)=>{//Creando una ruta para el caso en el que se envie los datos
     const {nombre_inv} = req.body;//ESTO ES PARA ENVIAR LOS DATOS A LA BASE DE DATOS Y DESPUES MOSTRAR LOS INVENTARIOS
     const nuevoInventario = {
-        nombre_inv
+        nombre_inv,
+        id_usuario: req.user.id_usuario
     };
     await pool.query('INSERT INTO inventario set ?',nuevoInventario);
     req.flash('success','Inventario creado exitosamente');
@@ -26,7 +28,7 @@ router.post('/dashboard',async(req,res)=>{//Creando una ruta para el caso en el 
 
 
 
-router.get('/dashboard/eliminar/:id_inventario',async(req,res)=>{//RUTA PARA ELIMINAR LOS INVENTARIOS
+router.get('/dashboard/eliminar/:id_inventario',estaLogeado,async(req,res)=>{//RUTA PARA ELIMINAR LOS INVENTARIOS
     const {id_inventario} = req.params;
     await pool.query('DELETE FROM inventario WHERE id_inventario = ?',[id_inventario]);
     req.flash('success','Inventario eliminado exitosamente');
@@ -37,7 +39,7 @@ router.get('/dashboard/eliminar/:id_inventario',async(req,res)=>{//RUTA PARA ELI
 
 //RUTA PARA DIRIGIRSE A LOS PRODUCTOS DE UN DETERMINADO INVENTARIO O LISTA. 
 //SE HACE UNA CONSULTA Y ESOS DATOS OBTENIDOS SE ENVIAN A LISTA.HBS
-router.get('/dashboard/lista/:id_inventario',async(req,res)=>{
+router.get('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
     const {id_inventario} = req.params;
     const productos = await pool.query('SELECT * FROM producto WHERE id_inventario = ?',[id_inventario]);
     
@@ -51,7 +53,7 @@ router.get('/dashboard/lista/:id_inventario',async(req,res)=>{
 
 
 //INSERTANDO LOS PRODUCTOS a una determinada lista
-router.post('/dashboard/lista/:id_inventario',async(req,res)=>{
+router.post('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
     const {nombre_pro, cantidad, cantidad_min, fecha_caducidad} = req.body;
     const {id_inventario} = req.params;
 
@@ -71,7 +73,7 @@ router.post('/dashboard/lista/:id_inventario',async(req,res)=>{
 
 
 //Cuando se envia datos por el metodo post para eliminar el producto de una lista o inventario
-router.get('/dashboard/lista/:id_inventario/:id_producto',async(req,res)=>{
+router.get('/dashboard/lista/:id_inventario/:id_producto',estaLogeado,async(req,res)=>{
     const {id_inventario,id_producto} = req.params;
     await pool.query('DELETE FROM producto WHERE id_producto = ?',[id_producto]);
     req.flash('success','Producto eliminado exitosamente');
@@ -80,7 +82,7 @@ router.get('/dashboard/lista/:id_inventario/:id_producto',async(req,res)=>{
 
 
 //AQUI ME QUEDE, CREO ES CONVENIENTE CREAR UNA INTERFAZ ESPECIALMENTE PARA EDITAR
-router.get('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)=>{
+router.get('/dashboard/lista/:id_inventario/editar/:id_producto',estaLogeado,async(req,res)=>{
     const {id_producto} = req.params;
     const getProducto = await pool.query('SELECT *FROM producto WHERE id_producto = ?',id_producto);
     const {nombre_pro,cantidad_min,cantidad,fecha_caducidad,id_inventario} = getProducto[0];
@@ -89,7 +91,7 @@ router.get('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)=
 
 
 //ACTUALIZANDO LOS DATOS, SE ENVIAN LOS DATOS
-router.post('/dashboard/lista/:id_inventario/editar/:id_producto',async(req,res)=>{
+router.post('/dashboard/lista/:id_inventario/editar/:id_producto',estaLogeado,async(req,res)=>{
     const {id_inventario,id_producto} = req.params;
     const {nombre_pro,cantidad_min,cantidad,fecha_caducidad} = req.body;
 

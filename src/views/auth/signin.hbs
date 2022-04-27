@@ -1,0 +1,30 @@
+    <!--Analisis de usabilidad. La facilidad de uso del sistema-->
+    <div id="login-container">
+        <main id="main-signin">
+            <h1>Bienvenido a NutryFoodPantry</h1>
+            <div class="container-login">
+                <h3>Inicio de Sesión</h3>
+    
+                <form action="/signin" id="form" method="post">
+                    <div id="usuario" class="flex-column-direction">
+                        <label for="txt_usuario">Usuario</label>
+                        <input type="text" name="usuario" placeholder="Ingresa tu usuario">
+                    </div>
+                    <div id="password" class="flex-column-direction">
+                        <label for="txt_password">Contraseña</label>
+                        <input type="password" name="password" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div id="button">
+                        <button id="ingresar">Ingresar</button>
+                    </div>
+                </form>
+    
+                <div class="images">
+                    <img src="./img/despensa.png" alt="">
+                </div>
+            </div>
+            <p id="registro-cuenta">¿Aún no tienes una cuenta? <a href="/signup">Registrate</a></p>
+        </main>
+    </div>
+
+    <!--<script src="./index.js"></script>-->
