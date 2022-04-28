@@ -1,3 +1,4 @@
+
     
     <!--<div class="modal-eliminar ocultar-modal-eliminar">
         <form action="#">
@@ -24,7 +25,7 @@
                 <label for="fecha_caducidad">Fecha caducidad:</label>
                 <input type="text" name="fecha_caducidad">
 
-                <button id="button-agregar-pro-cocina" >Agregar</button>
+                <button id="button-agregar-pro-cocina">Agregar</button>
             </form>
         </div>
     </div>
@@ -32,13 +33,23 @@
     <header id="header-cocina">
         <a href="/dashboard"><i class="fa-solid fa-angle-left"></i></a>
 
-        <aside id="options-cocina">
+        <aside class="options-cocina">
             <h1>Mi Cocina</h1>
 
             <ul id="options">
                 <li><i class="fa-solid fa-list-ul"></i>Generar lista de compra</li>
                 <li><i class="fa-solid fa-bell"></i>Notificar avisos</li>
-                <li class="add-pro-cocina"><i class="fa-solid fa-circle-plus"></i>Agregar producto</li>
+                
+                {{#if productos}}<!--Si hay productos entonces, muestrate en el header -->
+                    <li class="add-pro-cocina"><i class="fa-solid fa-circle-plus"></i> Agregar producto </li>
+                {{else}}<!--Si no hay productos, muestra otra ventana de dialogo para poder habilitar el DOM-->
+                    <div class="cocina-pro-container">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <b id="mnsg-sin-pro-cocina">Aún no se han agregado productos</b>
+                        <button type="button" id="add-pro-cocina-first">Crear</button>
+                    </div>
+                {{/if}}
+
             </ul>
         </aside>
     </header>
@@ -51,13 +62,10 @@
 
             <tbody>
                 {{#each productos}}
-                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad_min}}</th> <th>{{cantidad}}</th> <th>{{fecha_caducidad}}</th> <th id="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a>  <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a></th></tr>
+                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad_min}}</th> <th>{{cantidad}}</th> <th>{{fecha_caducidad}}</th> <th class="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a> <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a> </th></tr>
                 
-                {{else}}
-                    <div class="mnsg-add-pro-none">
-                        <b>No hay productos actualmente</b>
-                    </div>
                 {{/each}}                
             </tbody>
         </table>
     </main>
+

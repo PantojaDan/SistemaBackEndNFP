@@ -113,12 +113,12 @@ body{
 .fa-angle-left:hover{
     background-color: #7f7f7f;
 }
-#options-cocina{
+.options-cocina{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-#options-cocina h1{
+.options-cocina h1{
     font-size: 1.2rem;
     margin-right: 1rem;
     color: white;
@@ -187,14 +187,14 @@ body{
     font-weight: 100;
     color: #7f7f7f;
 }
-#actions-pro .fa-rotate{
+.actions-pro .fa-rotate{
     padding: 0.4rem;
     background-color: rgba(0, 0, 255, 0.658);
     color: white;
     border-radius: 50%;
     cursor: pointer;
 }
-#actions-pro .fa-trash-can{
+.actions-pro .fa-trash-can{
     padding: 0.4rem;
     background-color: rgba(255, 0, 0, 0.774);
     color: white;
@@ -262,3 +262,51 @@ body{
     cursor: pointer;
 }
 /*Fin. Modal eliminar*/
+
+
+
+
+/*Sin productos cocina*/
+.cocina-pro-container{
+    width: 250px;
+    height: 150px;
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    transition: all ease-in-out 0.2s;
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 125px);
+}
+.cocina-pro-container:hover{
+    transform: scale(1.05);
+}
+.cocina-pro-container > i{
+    font-size: 2rem;
+}
+#mnsg-sin-pro-cocina{
+    color: #18171c;
+    margin-top: 1rem;
+    text-align: center;
+}
+#add-pro-cocina-first{
+    width: 60px;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 3px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+    color: white;
+    margin-top: 1rem;
+    transition: all ease-in-out 0.2s;
+}
+#add-pro-cocina-first:hover{
+    color: var(--color-secondary);
+    background-color: transparent;
+}
+/*Fin. Sin productos cocina*/
