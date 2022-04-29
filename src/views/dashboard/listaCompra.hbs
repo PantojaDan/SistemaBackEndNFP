@@ -1,0 +1,35 @@
+    <div class="loader">
+        <img src="/img/loading.png" alt="loading" class="rotar">
+    </div>
+
+    <header id="header-lista-generada">
+        <div class="logo">
+            <img src="/img/N.png" alt="logo">
+        </div>
+        <h1>Mi Cocina</h1>
+    </header>
+
+    <div id="container-lista-generada">
+        <section id="section-hero">
+            <img src="/img/lista.png" alt="lista-icon">
+        </section>
+        <main id="main-lista-generada">
+            
+            {{#each productos}}
+                <div class="item-producto-lista">
+                    <img src="/img/icon-pro.png" alt="icon-pro">
+                    <b>{{nombre_pro}}</b>
+                    <div class="mensaje-agot"><p>Por agotarse</p><i class="fa-solid fa-face-frown"></i></div>
+                </div>
+            
+            {{else}}
+
+
+            {{/each}}
+    
+        </main>
+        <section id="actions-lista-generada">
+            <a href="/dashboard/micocina/{{id_inventario}}">MiCocina</a>
+            <form action="/dashboard/micocina/{{id_inventario}}/lista-de-compra/enviar" method="post"><button id="enviar-mensaje">Enviar<i class="fa-brands fa-whatsapp"></i></button></form>
+        </section>
+    </div>

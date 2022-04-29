@@ -37,7 +37,7 @@
             <h1>Mi Cocina</h1>
 
             <ul id="options">
-                <li><i class="fa-solid fa-list-ul"></i>Generar lista de compra</li>
+                <a href="/dashboard/micocina/{{id_inventario}}/lista-de-compra/consultar"><li><i class="fa-solid fa-list-ul"></i>Generar lista de compra</li></a>
                 <li><i class="fa-solid fa-bell"></i>Notificar avisos</li>
                 
                 {{#if productos}}<!--Si hay productos entonces, muestrate en el header -->
@@ -57,12 +57,12 @@
     <main class="productos-cocina">
         <table>
             <thead>
-                <tr><th>Nombre</th> <th>Cantidad minima</th> <th>Cantidad disponible</th> <th>Fecha de caducidad</th> <th>Acciones</th></tr>
+                <tr><th>Nombre</th> <th>Cantidad disponible</th> <th>Fecha de caducidad</th> <th>Acciones</th></tr>
             </thead>
 
             <tbody>
                 {{#each productos}}
-                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad_min}}</th> <th>{{cantidad}}</th> <th>{{fecha_caducidad}}</th> <th class="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a> <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a> </th></tr>
+                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}}</th> <th>{{fecha_caducidad}}</th> <th class="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a> <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a> </th></tr>
                 
                 {{/each}}                
             </tbody>
