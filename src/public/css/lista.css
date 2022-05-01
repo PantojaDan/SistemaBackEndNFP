@@ -82,6 +82,7 @@ body{
 
 .ocultar-lista{
     display: none;
+    opacity: 0;
 }
 
 .modal-lista{
@@ -140,6 +141,19 @@ body{
     color: white;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#close-modal-cocina{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;   
 }
 
 #button-lista{

@@ -5,20 +5,104 @@ const express = require('express');//Importando express para crear nuestras ruta
 const pool = require('../database');
 const router = express.Router();//Solo especificamos que queremos su modulo llamado Router()
 
-//const accountSid = process.env.ACCOUNT_SID;//IMPORTAMOS EL ACCOUNTSID OBTENIDO DE TWILIO
-//const authToken = process.env.AUTH_TOKEN;//IMPORTAMOS EL AUTHTOKEN OBTENIDO DE TWILIO
+const accountSid = process.env.ACCOUNT_SID;//IMPORTAMOS EL ACCOUNTSID OBTENIDO DE TWILIO
+const authToken = process.env.AUTH_TOKEN;//IMPORTAMOS EL AUTHTOKEN OBTENIDO DE TWILIO
 
-const client =  require('twilio')('ACf78b8c7adbc2fd05bd969a81a34859d9', 'b1cb27bacc8c4773546a566621abcad8');//NOS CONECTAMSO A TWILIO*/
+const client =  require('twilio')('ACf78b8c7adbc2fd05bd969a81a34859d9', '5feb80f7e0cdcff463d95f2fc54526d0');//NOS CONECTAMSO A TWILIO*/
+//const client = require('twilio')(accountSid,authToken);
+
+var notificar;
+
+
+//DIFERENCIA ENTRE DOS FECHAS
+const restaFechas = function(f1,f2){
+    let aFecha1 = f1.split('/');
+    let aFecha2 = f2.split('/');
+    let fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0]);
+    let fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+    let dif = fFecha2 - fFecha1;
+    let dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+    return dias;
+}
+
+
+//ALGORITMO PARA HACER LAS NOTIFICACIONES DE CADUCARSE FUNCION verificarFechas()
+const verificarFechas = function(productos,phone){
+
+    let bodyMngs = '';
+
+    let añoPro,mesPro,diaPro,fechaPro;//Variable para almacenar los datos del producto
+
+    let date = new Date();//Obtenemos la fecha de hoy
+    let año = date.getFullYear();//Obtenemos el año de hoy
+    let mes = date.getMonth() + 1;//Obtenemos el mes de hoy
+    let dia = date.getDate();//Obtenemos el dia de hoy
+    let fechaHoy = dia + '/' + mes + '/' + año;//Primer parametro
+
+    if(productos.length){
+        productos.forEach(producto => {
+            //Obteniendo el año, mes y dia de los productos
+            const {fecha_caducidad, nombre_pro} = producto;
+            
+            añoPro = fecha_caducidad.substring(0,4);
+            mesPro = fecha_caducidad.substring(6,7);
+            diaPro = fecha_caducidad.substring(9,10);
+            
+            fechaPro = diaPro + '/' + mesPro + '/' + añoPro;
+    
+            if((restaFechas(fechaHoy,fechaPro)<=30) && (restaFechas(fechaHoy,fechaPro)>0)){
+                let diasRestantes = restaFechas(fechaHoy,fechaPro);
+                
+                //AQUI VA EL CODIGO DE WHATSAPP
+                bodyMngs += nombre_pro + ' caduca en ' + diasRestantes + ' dias\n';
+                
+            }
+            
+            if(restaFechas(fechaHoy,fechaPro)<=0){
+                bodyMngs += nombre_pro + ' ha caducado\n ';
+            }
+            
+        });
+    
+        client.messages.create({
+            from: 'whatsapp:+14155238886',
+            to: 'whatsapp:+521' + phone,
+            body: bodyMngs
+        }).then(message => console.log(message.sid))
+    }
+    
+}
 
 router.get('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
     
     const productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
+    let user = await pool.query('SELECT *FROM inventario WHERE id_inventario = ?',[id_inventario]);
+    let idUser = user[0].id_usuario;
+    let telefonoUser = await pool.query('SELECT *FROM usuarios WHERE id_usuario = ?',[idUser]);
+    let phone = telefonoUser[0].telefono;
+
+    //verificarFechas(productos,phone);
+    if(notificar || !notificar){
+        
+        setInterval(function(){
+
+            if(!notificar){
+                notificar = undefined;
+                clearInterval(this);
+            }
+
+            if(notificar){
+                verificarFechas(productos,phone);
+            }
+
+        }, 5000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
+    
+    }
 
     res.render('dashboard/micocina',{productos,id_inventario});
+    
 });
-
-
 
 router.post('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
@@ -70,6 +154,7 @@ router.post('/micocina/:id_inventario/editar/:id_producto',async(req,res)=>{
 
 //ELIMINAR PRODUCTO
 router.get('/micocina/:id_inventario/:id_producto',async(req,res)=>{
+    notificar = false;
     const {id_inventario,id_producto} = req.params;
     await pool.query('DELETE FROM producto WHERE id_producto = ?',[id_producto]);
     req.flash('success','Producto eliminado exitosamente');
@@ -85,9 +170,11 @@ router.get('/micocina/:id_inventario/lista-de-compra/consultar',async(req,res)=>
     
     let productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
 
-    productos = productos.filter(producto => producto.cantidad >= producto.cantidad_min);
+    productos = productos.filter(producto => Number(producto.cantidad) <= Number(producto.cantidad_min));
+
 
     res.render('dashboard/listaCompra',{productos,id_inventario});
+
 });
 
 router.post('/micocina/:id_inventario/lista-de-compra/enviar',async(req,res)=>{
@@ -98,16 +185,39 @@ router.post('/micocina/:id_inventario/lista-de-compra/enviar',async(req,res)=>{
     let telefonoUser = await pool.query('SELECT *FROM usuarios WHERE id_usuario = ?',[idUser]);
     let phone = telefonoUser[0].telefono;
 
+    let productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
 
-    client.messages.create({
-        from: 'whatsapp:+14155238886',
-        to: 'whatsapp:+521' + phone,
-        body: 'Esto es una prueba para daniel'
-    }).then(message => console.log(message.sid))
+    productos = productos.filter(producto => Number(producto.cantidad) <= Number(producto.cantidad_min));
 
-    console.log('ha sido enviado a whatsapp: +52 1' + phone);///AQUI ME QUEDE YA CONSEGUI EL NUMERO DESDE LADB
+    productos.forEach(producto => {
+        client.messages.create({
+            from: 'whatsapp:+14155238886',
+            to: 'whatsapp:+521' + phone,
+            body: producto.nombre_pro
+        }).then(message => console.log(message.sid))
+    });
 
     res.redirect('/dashboard/micocina/'+id_inventario);
 });
+
+
+//Rutas notificaciones
+router.post('/micocina/:id_inventario/notificar/caducidad',(req,res)=>{
+    const {id_inventario} = req.params;
+    
+    notificar = true;
+
+    res.redirect('/dashboard/micocina/' + id_inventario);
+})
+
+
+router.post('/micocina/:id_inventario/cancelar-notificaciones/caducidad',(req,res)=>{
+    const {id_inventario} = req.params;
+
+    notificar = false;
+
+    res.redirect('/dashboard/micocina/' + id_inventario);
+});
+
 
 module.exports = router;//Exportando el router

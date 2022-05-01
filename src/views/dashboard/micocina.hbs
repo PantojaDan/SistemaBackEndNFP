@@ -9,6 +9,20 @@
         </form>
     </div>-->
 
+    <div class="modal-notification ocultar-notification">
+        <div class="modal-form-class">
+            <b>¿Desea notificar la caducidad de un producto?</b>
+            <div class="buttons-notificar">
+                <form action="/dashboard/micocina/{{id_inventario}}/notificar/caducidad" method="post">
+                    <button id="btn-notificar-form">Notificar</button>
+                </form>
+                <form action="/dashboard/micocina/{{id_inventario}}/cancelar-notificaciones/caducidad" method="post">
+                    <button id="btn-cancel-notificar">Dejar de notificar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-ingresar-producto ocultar-agregar-pro"><!--Ahorita lo oculto-->
         <div class="form-mi-cocina">
             <form action="/dashboard/micocina/{{id_inventario}}" method="post" class="form-ingresar-producto">
@@ -37,8 +51,10 @@
             <h1>Mi Cocina</h1>
 
             <ul id="options">
-                <a href="/dashboard/micocina/{{id_inventario}}/lista-de-compra/consultar"><li><i class="fa-solid fa-list-ul"></i>Generar lista de compra</li></a>
-                <li><i class="fa-solid fa-bell"></i>Notificar avisos</li>
+                
+                <a href="/dashboard/micocina/{{id_inventario}}/lista-de-compra/consultar" id="gen-lista"><li><i class="fa-solid fa-list-ul"></i>Generar lista de compra</li></a>
+                
+                <li id="btn-notificar"><i class="fa-solid fa-bell"></i>Notificar avisos</li>
                 
                 {{#if productos}}<!--Si hay productos entonces, muestrate en el header -->
                     <li class="add-pro-cocina"><i class="fa-solid fa-circle-plus"></i> Agregar producto </li>

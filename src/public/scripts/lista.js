@@ -5,7 +5,7 @@ const btnAddProLista = document.querySelector('.add-pro-lista');
 //const btnUpdatePro = document.querySelector('.updated-pro');
 //const btnDeletePro = document.querySelector('.delete-pro');
 
-const btnCloseLista = document.querySelector('#close-modal-lista');
+//const btnCloseCocina = document.querySelector('#close-modal-cocina');
 
 
 function toggle(){
@@ -19,16 +19,15 @@ function toggle(){
 }
 
 
-
+/*btnCloseCocina.addEventListener('click',()=>{//Arreglando este boton ya que no desaparece en totalidad el modal
+    modalLista.classList.remove('mostrar-lista');
+    modalLista.classList.add('ocultar-lista');
+});*/
 
 btnAddProLista.addEventListener('click',()=>{
     toggle();
 });
 
-btnCloseLista.addEventListener('click',()=>{
-    modalLista.classList.remove('mostrar-lista');
-    modalLista.classList.add('ocultar-lista');
-});
 
 /*btnUpdatePro.addEventListener('click',e=>{
     toggle();

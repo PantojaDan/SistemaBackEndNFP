@@ -138,7 +138,7 @@ body{
     display: flex;
     align-items: center;
 }
-#options li:hover{
+#options > li:hover{
     background-color: var(--color-primary);
 }
 #options li i{
@@ -309,4 +309,82 @@ body{
     color: var(--color-secondary);
     background-color: transparent;
 }
+
+#gen-lista{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin: none;
+    align-self: center;
+    color: white;
+    padding: 0.5rem;
+    transition: all ease-in 0.3s;
+    border-radius: 5px;
+}
+#gen-lista:hover{
+    background-color: var(--color-primary);
+}
 /*Fin. Sin productos cocina*/
+
+
+
+
+/*Inicio. Modal notificacion*/
+.ocultar-notification{
+    display: none !important;
+}
+.mostrar-notification{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-notification{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-form-class{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2rem 1.5rem;
+    border-radius: 5px;
+}
+.modal-form-class > b{
+    margin-bottom: 1.5rem;
+    color: #18171c;
+}
+.buttons-notificar{
+    display: flex;
+    justify-content: space-around;
+}
+.buttons-notificar button{
+    width: 150px;
+    height: 40px;
+    align-self: center;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+}
+#btn-notificar-form:hover{
+    background-color: transparent;
+    color: var(--color-primary);
+}
+#btn-cancel-notificar{
+    text-decoration: none;
+    background-color: rgba(255, 0, 0, 0.774);
+    border: none;
+}
+/*Fin. Modal notificacion*/

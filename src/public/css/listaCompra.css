@@ -174,3 +174,14 @@
 .mensaje-agot i{
     color: rgba(255, 0, 0, 0.774);
 }
+
+#lista-no-hay-caducados{
+    width: 250px;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    top: 55%;
+    left: calc(50% - 125px);
+}

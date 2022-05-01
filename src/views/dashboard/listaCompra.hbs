@@ -21,15 +21,23 @@
                     <b>{{nombre_pro}}</b>
                     <div class="mensaje-agot"><p>Por agotarse</p><i class="fa-solid fa-face-frown"></i></div>
                 </div>
-            
-            {{else}}
-
-
             {{/each}}
     
         </main>
+
+        
         <section id="actions-lista-generada">
-            <a href="/dashboard/micocina/{{id_inventario}}">MiCocina</a>
-            <form action="/dashboard/micocina/{{id_inventario}}/lista-de-compra/enviar" method="post"><button id="enviar-mensaje">Enviar<i class="fa-brands fa-whatsapp"></i></button></form>
+            
+
+            {{#if productos}}
+                <a href="/dashboard/micocina/{{id_inventario}}">MiCocina</a>
+                <form action="/dashboard/micocina/{{id_inventario}}/lista-de-compra/enviar" method="post"><button id="enviar-mensaje">Enviar<i class="fa-brands fa-whatsapp"></i></button></form>
+            {{else}}
+                <a href="/dashboard/micocina/{{id_inventario}}">MiCocina</a>
+                <div id="lista-no-hay-caducados">
+                    <b id="mnsg-sin-pro-cad">No hay productos por agotarse</b>
+                </div>
+            {{/if}}
         </section>
+        
     </div>

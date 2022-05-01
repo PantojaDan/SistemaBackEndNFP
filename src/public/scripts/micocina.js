@@ -9,8 +9,6 @@ const modalEliminar = document.querySelector('.modal-eliminar');
 const addProCocinaBtn = document.querySelector('.add-pro-cocina');//Header
 const addBtnNoHayPro = document.querySelector('#add-pro-cocina-first');//Abajo
 
-
-
 closeModalIngresar.addEventListener('click',()=>{
     modalIngresarProducto.classList.remove('mostrar-agregar-pro');
     modalIngresarProducto.classList.add('ocultar-agregar-pro');
