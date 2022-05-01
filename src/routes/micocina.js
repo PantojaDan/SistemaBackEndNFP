@@ -8,7 +8,7 @@ const router = express.Router();//Solo especificamos que queremos su modulo llam
 const accountSid = process.env.ACCOUNT_SID;//IMPORTAMOS EL ACCOUNTSID OBTENIDO DE TWILIO
 const authToken = process.env.AUTH_TOKEN;//IMPORTAMOS EL AUTHTOKEN OBTENIDO DE TWILIO
 
-const client =  require('twilio')('ACf78b8c7adbc2fd05bd969a81a34859d9', '5feb80f7e0cdcff463d95f2fc54526d0');//NOS CONECTAMSO A TWILIO*/
+const client =  require('twilio')('ACf78b8c7adbc2fd05bd969a81a34859d9', '26e9e420fea488e06eda1c695c94d7a7');//NOS CONECTAMSO A TWILIO*/
 //const client = require('twilio')(accountSid,authToken);
 
 var notificar;
@@ -179,7 +179,8 @@ router.get('/micocina/:id_inventario/lista-de-compra/consultar',async(req,res)=>
 
 router.post('/micocina/:id_inventario/lista-de-compra/enviar',async(req,res)=>{
     const {id_inventario} = req.params;
-    
+    let productosComprar = '';
+
     let user = await pool.query('SELECT *FROM inventario WHERE id_inventario = ?',[id_inventario]);
     let idUser = user[0].id_usuario;
     let telefonoUser = await pool.query('SELECT *FROM usuarios WHERE id_usuario = ?',[idUser]);
@@ -190,13 +191,15 @@ router.post('/micocina/:id_inventario/lista-de-compra/enviar',async(req,res)=>{
     productos = productos.filter(producto => Number(producto.cantidad) <= Number(producto.cantidad_min));
 
     productos.forEach(producto => {
-        client.messages.create({
-            from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+521' + phone,
-            body: producto.nombre_pro
-        }).then(message => console.log(message.sid))
+        productosComprar += '-' + producto.nombre_pro + '\n';
     });
 
+    client.messages.create({
+        from: 'whatsapp:+14155238886',
+        to: 'whatsapp:+521' + phone,
+        body: 'Comprar los siguientes productos: ' + productosComprar
+    }).then(message => console.log(message.sid))
+    req.flash('whatsapp','Mensaje enviado');
     res.redirect('/dashboard/micocina/'+id_inventario);
 });
 
@@ -207,6 +210,7 @@ router.post('/micocina/:id_inventario/notificar/caducidad',(req,res)=>{
     
     notificar = true;
 
+    req.flash('activo','Notificaciones activadas');
     res.redirect('/dashboard/micocina/' + id_inventario);
 })
 
@@ -216,6 +220,7 @@ router.post('/micocina/:id_inventario/cancelar-notificaciones/caducidad',(req,re
 
     notificar = false;
 
+    req.flash('desactivado','Desactivado');
     res.redirect('/dashboard/micocina/' + id_inventario);
 });
 

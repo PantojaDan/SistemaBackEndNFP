@@ -27,10 +27,138 @@
     margin-bottom: 1rem;
 }
 .mensage-operacion #mnsg b{
-    color: #18171c;
+    color: #25252d;
     font-size: 1rem;
     margin-top: 0.5rem;
 }
+
+
+
+/*WhatsApp Inicio*/
+.mensage-operacion #mnsg-whatsapp{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+.mensage-operacion #mnsg-whatsapp i{
+    font-size: 7rem;
+    color: #25D366;
+    margin-bottom: 1rem;
+}
+.mensage-operacion #mnsg-whatsapp b{
+    color: #25252d;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+/*WhatsApp Fin*/
+
+
+/*Message Activo Inicio*/
+.mensage-operacion #mnsg-activo{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+.mensage-operacion #mnsg-activo i{
+    font-size: 7rem;
+    color: #efdd3e;
+    margin-bottom: 1rem;
+}
+.mensage-operacion #mnsg-activo b{
+    color: #25252d;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+/*Message Activo Fin*/
+
+
+/*Descativado*/
+.mensage-operacion #mnsg-desactivado{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+.mensage-operacion #mnsg-desactivado i{
+    font-size: 7rem;
+    color: rgb(228, 19, 19);
+    margin-bottom: 1rem;
+}
+.mensage-operacion #mnsg-desactivado b{
+    color: #25252d;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+/*Desactivado*/
+
+
+
+/*Inicio. Bienvenida*/
+.mensage-operacion #mnsg-bienvenida{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+.mensage-operacion #mnsg-bienvenida > i{
+    font-size: 7rem;
+    color: rgb(255, 212, 22);
+    margin-bottom: 1rem;
+}
+.mensage-operacion #mnsg-bienvenida b{
+    color: #25252d;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+/*Fin. Bienvenida*/
+
+
+/*Inicio. Incorrecto*/
+.mensage-operacion #mnsg-incorrecto{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+.mensage-operacion #mnsg-incorrecto > i{
+    font-size: 7rem;
+    color:rgb(228, 19, 19);
+    margin-bottom: 1rem;
+}
+.mensage-operacion #incorrecto b{
+    color: #25252d;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+/*Fin. Incorrecto*/
 
 .ocultar-mensage-operacion{
     display: none;

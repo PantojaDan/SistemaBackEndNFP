@@ -52,8 +52,11 @@ app.use((req,res,next)=>{//Dejamos listo un middleware que toma un request,un re
     //Esta funcion, toma la informacion del usuario, toma lo que el servidor va a responder y tambien toma una funcion para continuar con el resto del codigo
     
     app.locals.success = req.flash('success');
-
-    app.locals.message = req.flash('message');
+    app.locals.whatsapp = req.flash('whatsapp');
+    app.locals.bienvenida = req.flash('bienvenida');
+    app.locals.incorrecto = req.flash('incorrecto');
+    app.locals.activo = req.flash('activo');
+    app.locals.desactivado = req.flash('desactivado');
     app.locals.user = req.user;
     next();
 })

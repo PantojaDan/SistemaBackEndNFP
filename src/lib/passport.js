@@ -19,15 +19,15 @@ passport.use('local.signin', new LocalStrategy({
         const user = rows[0];//Guardamos ese usuario
         const validPassword = await helpers.matchPassword(password,user.contraseña);//Comparamos la contraseña que envia el formulario password, y la contraseña almacenada cifrada en la base de datos user.password
         if(validPassword){//Si las contraseñas coinciden. entonces.....
-            done(null,user,req.flash('success','Bienvenido ' + user.nombre_us));
-            console.log('Bienvenido');
+            done(null,user,req.flash('bienvenida','Bienvenido ' + user.nombre_us));
+            //console.log('Bienvenido');
         }else{//Si no coinciden
-            done(null,false,req.flash('message','Contraseña incorrecta'));//Terminamos con el proceso tambien
+            done(null,false,req.flash('incorrecto','Contraseña incorrecta'));//Terminamos con el proceso tambien
             console.log('Contraseña incorrecta');
         }
     }else{//Si no encuentra nada, entonces......
         console.log('El usuario no existe');
-        return done(null,false,req.flash('message','El usuario no existe'));
+        return done(null,false,req.flash('incorrecto','El usuario no existe'));
     }
 
 }));

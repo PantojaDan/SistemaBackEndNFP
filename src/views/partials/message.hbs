@@ -8,11 +8,52 @@
 {{/if}}
 
 
-{{#if message}}
+{{#if bienvenida}}
     <div class="mensage-operacion">
-        <div id="mnsg">
-             <i class="fa-solid fa-circle-check"></i>
-            <b>{{success}}</b>
+        <div id="mnsg-bienvenida">
+            <i class="fa-solid fa-face-laugh-beam"></i>
+            <b>{{bienvenida}}</b>
         </div>
     </div>
 {{/if}}
+
+
+{{#if incorrecto}}
+    <div class="mensage-operacion">
+        <div id="mnsg-incorrecto">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <b>{{incorrecto}}</b>
+        </div>
+    </div>
+{{/if}}
+
+
+{{#if whatsapp}}
+    <div class="mensage-operacion">
+        <div id="mnsg-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <b>{{whatsapp}}</b>
+        </div>
+    </div>
+{{/if}}
+
+
+{{#if activo}}
+    <div class="mensage-operacion">
+        <div id="mnsg-activo">
+            <i class="fa-solid fa-bell"></i>
+            <b>{{activo}}</b>
+        </div>
+    </div>
+{{/if}}
+
+
+{{#if desactivado}}
+    <div class="mensage-operacion">
+        <div id="mnsg-desactivado">
+            <i class="fa-solid fa-bell-slash"></i>
+            <b>{{desactivado}}</b>
+        </div>
+    </div>
+{{/if}}
+
