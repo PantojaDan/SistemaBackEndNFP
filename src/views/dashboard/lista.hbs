@@ -3,8 +3,8 @@
     <div class="modal-lista ocultar-lista"><!--Ahorita lo oculto-->
         <div class="form-lista">
             
-            <form action="/dashboard/lista/{{idInventario}}" class="form-lista-add" method="post">
-                <a href="/dashboard/lista/{{idInventario}}"><span id="close-modal-lista">X</span></a>
+            <form action="/dashboard/lista/{{id_inventario}}" class="form-lista-add" method="post">
+                <a href="/dashboard/lista/{{id_inventario}}"><span id="close-modal-lista">X</span></a>
                 <label for="nombre_pro">Nombre del producto:</label>
                 <input type="text" name="nombre_pro">
 
@@ -27,7 +27,7 @@
 
 
     <div class="modal-eliminar-lista ocultar-modal-lista">
-        <form action="/dashboard/lista/eliminar/{{idInventario}}" method="post">
+        <form action="/dashboard/lista/eliminar/{{id_inventario}}" method="post">
             <i class="fa-solid fa-triangle-exclamation"></i>
             <b>Usted esta a punto de eliminar un producto</b>
             <p>¿Desea eliminarlo?</p>
@@ -41,7 +41,7 @@
 
         <aside id="options-lista">
             
-            <h1>{{nombreInventario}}</h1>
+            <h1>{{nombre_inv}}</h1>
 
             <ul id="options-lis">
                 <li class="add-pro-lista"><i class="fa-solid fa-circle-plus"></i>Agregar producto</li>
@@ -69,3 +69,8 @@
             </tbody>
         </table>
     </main>
+
+    <footer class="footer">
+        <span>NutryFoodPantry</span>
+        <div class="logo-footer"><img src="/img/N.png" alt="logo"></div>
+    </footer>

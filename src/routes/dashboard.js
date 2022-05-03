@@ -47,14 +47,18 @@ router.get('/dashboard/eliminar/:id_inventario',estaLogeado,async(req,res)=>{//R
 //SE HACE UNA CONSULTA Y ESOS DATOS OBTENIDOS SE ENVIAN A LISTA.HBS
 router.get('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
     const {id_inventario} = req.params;
+    
     const productos = await pool.query('SELECT * FROM producto WHERE id_inventario = ?',[id_inventario]);
-    
-    const invNombre = await pool.query('SELECT * FROM inventario WHERE id_inventario = ?',[id_inventario]);
-    
-    const idInventario = invNombre[0].id_inventario;
-    const nombreInventario = invNombre[0].nombre_inv;
-
-    res.render('dashboard/lista',{productos,idInventario,nombreInventario});
+    console.log(id_inventario + 'linea 52');
+    const nombre_inv = await pool.query('SELECT * FROM inventario WHERE id_inventario = ?',[id_inventario]);
+    console.log(id_inventario + 'linea 54');
+    //const {nombre_inv} = inventario;
+    console.log(nombre_inv);
+    //const idInventario = invNombre[0].id_inventario;
+    //const nombreInventario = invNombre[0].nombre_inv;
+    console.log(id_inventario + 'linea 59');
+    console.log(nombre_inv);
+    res.render('dashboard/lista',{productos,id_inventario,nombre_inv: nombre_inv[0].nombre_inv});
 });
 
 

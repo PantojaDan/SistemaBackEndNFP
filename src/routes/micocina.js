@@ -45,11 +45,11 @@ const verificarFechas = function(productos,phone){
             const {fecha_caducidad, nombre_pro} = producto;
             
             añoPro = fecha_caducidad.substring(0,4);
-            mesPro = fecha_caducidad.substring(6,7);
-            diaPro = fecha_caducidad.substring(9,10);
+            mesPro = fecha_caducidad.substring(5,7);
+            diaPro = fecha_caducidad.substring(8,10);
             
             fechaPro = diaPro + '/' + mesPro + '/' + añoPro;
-    
+            
             if((restaFechas(fechaHoy,fechaPro)<=30) && (restaFechas(fechaHoy,fechaPro)>0)){
                 let diasRestantes = restaFechas(fechaHoy,fechaPro);
                 
@@ -69,6 +69,7 @@ const verificarFechas = function(productos,phone){
             to: 'whatsapp:+521' + phone,
             body: bodyMngs
         }).then(message => console.log(message.sid))
+        .catch(message => console.log(message))
     }
     
 }
@@ -76,13 +77,25 @@ const verificarFechas = function(productos,phone){
 router.get('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
     
-    const productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
+    let productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
     let user = await pool.query('SELECT *FROM inventario WHERE id_inventario = ?',[id_inventario]);
-    let idUser = user[0].id_usuario;
-    let telefonoUser = await pool.query('SELECT *FROM usuarios WHERE id_usuario = ?',[idUser]);
-    let phone = telefonoUser[0].telefono;
-
+    const {id_usuario} = user[0];
+    let usuario = await pool.query('SELECT *FROM usuarios WHERE id_usuario = ?',[id_usuario]);
+    const {telefono} = usuario[0];
+    //let phone = telefonoUser[0].telefono;
+    //console.log(telefono);
     //verificarFechas(productos,phone);
+    
+    productos.forEach(async(producto) => {
+        const {id_producto,cantidad} = producto;
+
+        if(cantidad <= 0){
+            await pool.query('DELETE FROM producto WHERE id_producto = ?',[id_producto]);
+        }
+    });
+
+    productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]); 
+
     if(notificar || !notificar){
         
         setInterval(function(){
@@ -93,10 +106,10 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
             }
 
             if(notificar){
-                verificarFechas(productos,phone);
+                verificarFechas(productos,telefono);
             }
 
-        }, 5000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
+        }, 10000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
     
     }
 
