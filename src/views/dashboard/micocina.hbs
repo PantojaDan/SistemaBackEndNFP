@@ -28,19 +28,47 @@
             <form action="/dashboard/micocina/{{id_inventario}}" method="post" class="form-ingresar-producto">
                 <span id="close-modal-ingresar">X</span>
                 <label for="nombre_producto">Nombre del producto:</label>
-                <input type="text" name="nombre_pro">
+                <input type="text" name="nombre_pro" id="nombre_pro_cocina">
 
-                <label for="cantidad">Cantidad:</label>
-                <input type="text" name="cantidad">
+                <div id="cantidades-micocina">
+                    <div>
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" name="cantidad" min="0" id="cantidad_cocina">
+                    </div>
+
+                    <select name="medida" id="medidas">
+                        <option value="Kg">Kg</option>
+                        <option value="Ml">Ml</option>
+                        <option value="L">L</option>
+                        <option value="Mg">Mg</option>
+                        <option value="Piezas">Piezas</option>
+                        <option value="Barra">Barras</option>
+                        <option value="Frasco">Frascos</option>
+                        <option value="Caja">Caja</option>
+                    </select>
+                </div>
 
                 <label for="cantidad_minima">Cantidad minima:</label>
-                <input type="text" name="cantidad_min">
+                <input type="number" name="cantidad_min" min="1" id="cantidad_minima_cocina">
 
                 <label for="fecha_caducidad">Fecha caducidad:</label>
-                <input type="text" name="fecha_caducidad">
-
-                <button id="button-agregar-pro-cocina">Agregar</button>
+                <input type="date" name="fecha_caducidad" id="fecha_caducidad_cocina">
+                <div id="botones-cocina-form">
+                    <span id="validar-form-cocina">Validar</span><button id="button-agregar-pro-cocina" class="quitar-btn">Agregar</button>
+                </div>
             </form>
+        </div>
+    </div>
+
+    <!--Cuando hay error en el modal de registrar un producto-->
+    <div class="container-error-signup ocultar-signup">
+        <div class="error-form-signup">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <div class="errores-signup">
+                <b>Tienes los siguientes errores:</b>
+                <ul id="errores-ul">
+                </ul>      
+            </div>
         </div>
     </div>
 
@@ -78,7 +106,7 @@
 
             <tbody>
                 {{#each productos}}
-                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}}</th> <th>{{fecha_caducidad}}</th> <th class="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a> <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a> </th></tr>
+                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}} {{medida}}</th> <th>{{fecha_caducidad}}</th> <th class="actions-pro"> <a href="/dashboard/micocina/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-product"></i></a> <a href="/dashboard/micocina/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a> </th></tr>
                 
                 {{/each}}                
             </tbody>

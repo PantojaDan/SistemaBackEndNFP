@@ -64,13 +64,14 @@ router.get('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
 
 //INSERTANDO LOS PRODUCTOS a una determinada lista
 router.post('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
-    const {nombre_pro, cantidad, cantidad_min, fecha_caducidad} = req.body;
+    const {nombre_pro, cantidad, medida, cantidad_min, fecha_caducidad} = req.body;
     const {id_inventario} = req.params;
 
     const nuevoProducto = {
         nombre_pro,
         cantidad_min,
         cantidad,
+        medida,
         fecha_caducidad,
         id_inventario
     };

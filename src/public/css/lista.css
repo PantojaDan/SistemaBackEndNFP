@@ -115,12 +115,12 @@ body{
     justify-content: center;
     overflow: hidden;
 }
-.form-lista-add > label{
+.form-lista-add  label{
     font-size: 1.2rem;
     color: #1d1d1d;
     margin-bottom: 1rem;
 }
-.form-lista-add > input{
+.form-lista-add  input{
     outline: none;
     padding: 0 0.5rem 0.5rem 0;
     width: 100%;
@@ -128,6 +128,18 @@ body{
     font-size: 1.2rem;
     border: none;
     margin-bottom: 1rem;
+}
+
+#cantidades-lista-medidas{
+    display: flex;
+    flex-direction: row;
+}
+#medidasLista{
+    outline: none;
+    border: none;
+    height: 30px;
+    font-size: 1.2rem;
+    color: #7f7f7f;
 }
 
 #close-modal-lista{
@@ -155,7 +167,18 @@ body{
     cursor: pointer;
     border-radius: 5px;   
 }
-
+#botones-lista-form{
+    display: flex;
+    justify-content: center;
+}
+#botones-edit-pro-form{
+    display: flex;
+    justify-content: center;
+}
+#botones-cocina-editar{
+    display: flex;
+    justify-content: center;
+}
 #button-lista{
     width: 40%;
     border: 2px solid var(--color-secondary);
@@ -171,8 +194,87 @@ body{
     transition: all ease-in-out 0.2s;
     text-decoration: none;
 }
-
+#button-lista-edit{
+    width: 40%;
+    border: 2px solid var(--color-secondary);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-decoration: none;    
+}
+#btn-edit-cocina-actualizar{
+    width: 40%;
+    border: 2px solid var(--color-secondary);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-decoration: none;
+}
+#button-lista-validar{
+    width: 40%;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-decoration: none;
+}
+#validar-form-lista{
+    width: 40%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-decoration: none;
+}
+#validar-form-lista:hover{
+    opacity: 0.9;
+}
+#btn-edit-cocina-validar{
+    width: 40%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-decoration: none;
+}
 #button-lista:hover{
+    background-color: transparent;
+    color: var(--color-secondary);
+}
+#btn-edit-cocina-actualizar:hover{
     background-color: transparent;
     color: var(--color-secondary);
 }

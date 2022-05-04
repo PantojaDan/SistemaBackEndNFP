@@ -2,22 +2,35 @@
         <div class="form-lista">
             
             <form action="/dashboard/lista/{{id_inventario}}/editar/{{id_producto}}" class="form-lista-add" method="post">
-                <span id="close-modal-lista">X</span>
+                <a href="/dashboard/lista/{{id_inventario}}"><span id="close-modal-lista">X</span></a>
                 <label for="nombre_pro">Nombre del producto:</label>
-                <input type="text" name="nombre_pro" value="{{nombre_pro}}">
+                <input type="text" name="nombre_pro" value="{{nombre_pro}}" id="nombre_pro_edit">
     
                 <label for="cantidad">Cantidad:</label>
-                <input type="text" name="cantidad" value="{{cantidad}}">
+                <input type="number" name="cantidad" value="{{cantidad}}" min="1" id="cantidad_edit">
 
                 <label for="cantidad_min">Cantidad minima:</label>
-                <input type="text" name="cantidad_min" value="{{cantidad_min}}">
+                <input type="number" name="cantidad_min" value="{{cantidad_min}}" min="1" id="cantidad_min_edit">
 
                 <label for="fecha_caducidad">Fecha caducidad:</label>
-                <input type="text" name="fecha_caducidad" id="fecha-lista" value="{{fecha_caducidad}}">
+                <input type="date" name="fecha_caducidad" id="fecha-lista-edit" value="{{fecha_caducidad}}">
 
-                
-                <button id="button-lista">Agregar</button>
+                <div id="botones-edit-pro-form">
+                    <span id="button-lista-validar">Validar</span>
+                    <button id="button-lista-edit" class="quitar-btn">Actualizar</button>
+                </div>                
             
             </form>
+        </div>
+    </div>
+
+    <div class="container-error-signup ocultar-signup">
+        <div class="error-form-signup">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <div class="errores-signup">
+                <b>Tienes los siguientes errores:</b>
+                <ul id="errores-ul">
+                </ul>      
+            </div>
         </div>
     </div>

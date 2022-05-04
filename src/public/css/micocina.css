@@ -42,23 +42,34 @@ body{
     justify-content: center;
     overflow: hidden;
 }
-.form-ingresar-producto > label{
+.form-ingresar-producto label{
     font-size: 1.2rem;
     color: #7f7f7f;
     margin-bottom: 1rem;
     font-weight: 900;
 }
-.form-ingresar-producto > input{
+.form-ingresar-producto input{
     outline: none;
     padding: 0 0.5rem 0.5rem 0;
     width: 100%;
     color: #7f7f7f;
     font-size: 1.2rem;
     border: none;
-    border-bottom: 1px solid rgba(24, 23, 28, 0.466);
     margin-bottom: 1rem;
 }
-
+#cantidades-micocina{
+    display: flex;
+    flex-direction: row;
+}
+#cantidades-micocina select{
+    border: 0;
+    outline: none;
+    font-size: 1.2rem;
+    color: #7f7f7f;
+}
+#cantidades-micocina select > option{
+    box-shadow: none;
+}
 #close-modal-ingresar{
     position: absolute;
     top: 5px;
@@ -72,6 +83,13 @@ body{
     border-radius: 5px;
 }
 
+#botones-cocina-form{
+    display: flex;
+    justify-content: center;
+}
+.quitar-btn{
+    display: none !important;
+}
 #button-agregar-pro-cocina{
     width: 40%;
     border: 2px solid var(--color-secondary);
@@ -83,6 +101,24 @@ body{
     background-color: var(--color-secondary);
     cursor: pointer;
     transition: all ease-in-out 0.2s;
+}
+
+#validar-form-cocina{
+    width: 40%;
+    border: 2px solid var(--color-primary);
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    align-self: center;
+    margin-top: 1rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+    text-align: center;
+}
+
+#validar-form-cocina:hover{
+    opacity: 0.9;
 }
 
 #button-agregar-pro-cocina:hover{
@@ -343,6 +379,7 @@ body{
     width: 100%;
     height: 100vh;
     position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);

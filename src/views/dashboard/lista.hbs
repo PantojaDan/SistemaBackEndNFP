@@ -6,24 +6,52 @@
             <form action="/dashboard/lista/{{id_inventario}}" class="form-lista-add" method="post">
                 <a href="/dashboard/lista/{{id_inventario}}"><span id="close-modal-lista">X</span></a>
                 <label for="nombre_pro">Nombre del producto:</label>
-                <input type="text" name="nombre_pro">
-
-                <label for="cantidad">Cantidad:</label>
-                <input type="text" name="cantidad">
+                <input type="text" name="nombre_pro" id="nombreProLista">
+                
+                <div id="cantidades-lista-medidas">
+                    <div id="cantidad-lista">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" name="cantidad" min="0" id="cantidadLista">
+                    </div>
+                    <select name="medida" id="medidasLista">
+                        <option value="Kg">Kg</option>
+                        <option value="Ml">Ml</option>
+                        <option value="L">L</option>
+                        <option value="Mg">Mg</option>
+                        <option value="Piezas">Piezas</option>
+                        <option value="Barra">Barras</option>
+                        <option value="Frasco">Frascos</option>
+                        <option value="Caja">Caja</option>
+                    </select>
+                </div>
 
                 <label for="cantidad_min">Cantidad minima:</label>
-                <input type="text" name="cantidad_min">
+                <input type="number" name="cantidad_min" min="1" id="cantidadMinLista">
 
                 <label for="fecha_caducidad">Fecha caducidad:</label>
-                <input type="text" name="fecha_caducidad" id="fecha-lista">
+                <input type="date" name="fecha_caducidad" id="fecha-lista">
 
-                
-                <button id="button-lista">Agregar</button>
+                <div id="botones-lista-form">
+                    <span id="validar-form-lista">Validar</span>
+                    <button id="button-lista" class="quitar-btn">Agregar</button>
+                </div>
             
             </form>
         </div>
     </div>
 
+
+    <!--Cuando hay error en el modal de registrar un producto en una lista-->
+    <div class="container-error-signup ocultar-signup">
+        <div class="error-form-signup">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <div class="errores-signup">
+                <b>Tienes los siguientes errores:</b>
+                <ul id="errores-ul">
+                </ul>      
+            </div>
+        </div>
+    </div>
 
 
     <div class="modal-eliminar-lista ocultar-modal-lista">
@@ -57,7 +85,7 @@
 
             <tbody>
                 {{#each productos}}
-                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}}</th> <th id="actions-pro-lista"><a href="/dashboard/lista/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-pro"></i></a> <a href="/dashboard/lista/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a></th> <th>Adquirido</th></tr>
+                    <tr><th>{{nombre_pro}}</th> <th>{{cantidad}} {{medida}}</th> <th id="actions-pro-lista"><a href="/dashboard/lista/{{id_inventario}}/editar/{{id_producto}}"><i class="fa-solid fa-rotate updated-pro"></i></a> <a href="/dashboard/lista/{{id_inventario}}/{{id_producto}}"><i class="fa-regular fa-trash-can delete-pro"></i></a></th> <th>Adquirido</th></tr>
                 
                 {{else}}
 

@@ -119,17 +119,21 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
 
 router.post('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
-    const {nombre_pro,cantidad_min,cantidad,fecha_caducidad} = req.body;
+    const {nombre_pro,cantidad_min,cantidad,medida,fecha_caducidad} = req.body;
 
     const nuevoPro = {
         nombre_pro,
         cantidad_min,
         cantidad,
+        medida,
         fecha_caducidad,
         id_inventario
     };
 
+    console.log(fecha_caducidad + ' tipo: ' + typeof(fecha_caducidad));
+
     await pool.query('INSERT INTO producto SET ?',nuevoPro);
+
     req.flash('success','Producto agregado exitosamente');
     res.redirect('/dashboard/micocina/'+id_inventario);
 });
@@ -160,7 +164,11 @@ router.post('/micocina/:id_inventario/editar/:id_producto',async(req,res)=>{
         id_inventario
     }
     await pool.query('UPDATE producto set ? WHERE id_producto = ?',[updatedProducto,id_producto]);
-    req.flash('success','Producto actualizado exitosamente');
+    if(cantidad <= 0){
+        req.flash('incorrecto','Producto agotado, eliminado');
+    }else{
+        req.flash('success','Producto actualizado exitosamente');
+    }
     res.redirect('/dashboard/micocina/'+id_inventario);
 });
 
