@@ -64,12 +64,12 @@ router.get('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
 
 //INSERTANDO LOS PRODUCTOS a una determinada lista
 router.post('/dashboard/lista/:id_inventario',estaLogeado,async(req,res)=>{
-    const {nombre_pro, cantidad, medida, cantidad_min, fecha_caducidad} = req.body;
+    const {nombre_pro, cantidad, medida, fecha_caducidad} = req.body;
     const {id_inventario} = req.params;
 
     const nuevoProducto = {
         nombre_pro,
-        cantidad_min,
+        cantidad_min: '',
         cantidad,
         medida,
         fecha_caducidad,
@@ -119,5 +119,17 @@ router.post('/dashboard/lista/:id_inventario/editar/:id_producto',estaLogeado,as
 });
 
 
+
+//CUANDO REMOVEMOS
+router.get('/dashboard/lista/remover/productos/:id_inventario',async(req,res)=>{
+    let {id_inventario} = req.params;
+
+    const miCocina = await pool.query('SELECT *FROM inventario WHERE nombre_inv = ? and id_usuario = ?',['Mi Cocina',req.user.id_usuario]);
+    const idCocina = miCocina[0].id_inventario; 
+    
+    await pool.query('UPDATE producto set id_inventario = ? WHERE id_inventario = ?',[idCocina,id_inventario]);
+    req.flash('success','Productos removidos a Mi Cocina');
+    res.redirect('/dashboard/lista/'+id_inventario);
+})
 
 module.exports = router;//Exportando el router

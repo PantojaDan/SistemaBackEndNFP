@@ -6,7 +6,7 @@ let liLista = document.createElement('li');
 //Seleccionamos los campos
 const nombreProLista = document.querySelector('#nombreProLista');
 const cantidadProLista = document.querySelector('#cantidadLista');
-const cantidadMinProLista = document.querySelector('#cantidadMinLista');
+//const cantidadMinProLista = document.querySelector('#cantidadMinLista');
 const fechaCaducidadProLista = document.querySelector('#fecha-lista');
 const medidaLista =  document.querySelector('#medidasLista');
 
@@ -21,11 +21,11 @@ btnValidarProListaForm.addEventListener('click',()=>{
 
     let nombre = nombreProLista.value;
     let cantidad = cantidadProLista.value;
-    let cantidadMin = cantidadMinProLista.value;
+    //let cantidadMin = cantidadMinProLista.value;
     let fechaCaducidad = fechaCaducidadProLista.value;
     let medida = medidaLista.value;
 
-    if((nombre=='')||(cantidad=='')||(cantidadMin=='')||(fechaCaducidad=='')||(medida=='')){
+    if((nombre=='')||(cantidad=='')||/*(cantidadMin=='')||*/(fechaCaducidad=='')||(medida=='')){
         liLista.innerHTML += '<li>Algunos campos estan vacios</li>';
         isOk = false;
     }

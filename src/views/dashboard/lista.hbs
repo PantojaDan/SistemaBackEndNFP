@@ -25,10 +25,10 @@
                     </select>
                 </div>
 
-                <label for="cantidad_min">Cantidad minima:</label>
-                <input type="number" name="cantidad_min" min="1" id="cantidadMinLista">
+                <!--<label for="cantidad_min">Cantidad minima:</label>
+                <input type="number" name="cantidad_min" min="1" id="cantidadMinLista">-->
 
-                <label for="fecha_caducidad">Fecha caducidad:</label>
+                <label for="fecha_caducidad" class="ocultar-fecha">Fecha caducidad:</label>
                 <input type="date" name="fecha_caducidad" id="fecha-lista">
 
                 <div id="botones-lista-form">
@@ -69,6 +69,10 @@
 
         <aside id="options-lista">
             
+            {{#if productos}}
+                <a href="/dashboard/lista/remover/productos/{{id_inventario}}" id="remover-pro">Remover productos a inventario</a>
+            {{/if}}
+
             <h1>{{nombre_inv}}</h1>
 
             <ul id="options-lis">
