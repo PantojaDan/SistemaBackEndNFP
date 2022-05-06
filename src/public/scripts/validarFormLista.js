@@ -7,6 +7,8 @@ let liLista = document.createElement('li');
 const nombreProLista = document.querySelector('#nombreProLista');
 const cantidadProLista = document.querySelector('#cantidadLista');
 //const cantidadMinProLista = document.querySelector('#cantidadMinLista');
+const categoria = document.querySelector('#categoria');
+const labelCategoria =  document.querySelector('#label-categoria');
 const fechaCaducidadProLista = document.querySelector('#fecha-lista');
 const medidaLista =  document.querySelector('#medidasLista');
 
@@ -22,10 +24,10 @@ btnValidarProListaForm.addEventListener('click',()=>{
     let nombre = nombreProLista.value;
     let cantidad = cantidadProLista.value;
     //let cantidadMin = cantidadMinProLista.value;
-    let fechaCaducidad = fechaCaducidadProLista.value;
+    //let fechaCaducidad = fechaCaducidadProLista.value;
     let medida = medidaLista.value;
 
-    if((nombre=='')||(cantidad=='')||/*(cantidadMin=='')||*/(fechaCaducidad=='')||(medida=='')){
+    if((nombre=='')||(cantidad=='')||/*(cantidadMin=='')||*/(medida=='')){
         liLista.innerHTML += '<li>Algunos campos estan vacios</li>';
         isOk = false;
     }
@@ -50,5 +52,17 @@ btnValidarProListaForm.addEventListener('click',()=>{
 window.addEventListener('click',e=>{
     if(e.target.classList[0]==='container-error-signup'){
         containerErrorSignup.classList.add('ocultar-signup');
+    }
+});
+
+categoria.addEventListener('change',()=>{
+    const valorCategoria = categoria.value;
+
+    if(valorCategoria == 'Producto procesado' || valorCategoria == 'Lacteos' || valorCategoria=='Embutidos'){
+        fechaCaducidadProLista.classList.remove('ocultar-fecha');
+        labelCategoria.classList.remove('ocultar-fecha');
+    }else{
+        fechaCaducidadProLista.classList.add('ocultar-fecha');
+        labelCategoria.classList.add('ocultar-fecha');
     }
 });

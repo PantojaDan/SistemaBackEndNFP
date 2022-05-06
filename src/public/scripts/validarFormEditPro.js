@@ -5,8 +5,11 @@ let liListaEdit = document.createElement('li');
 
 const nombreProEdit = document.querySelector('#nombre_pro_edit');
 const cantidadEdit = document.querySelector('#cantidad_edit');
-const cantidadMinEdit = document.querySelector('#cantidad_min_edit');
+//const cantidadMinEdit = document.querySelector('#cantidad_min_edit');
+const fechaSelectLista = document.querySelector('#categoria-edit-lista');
+const labelFechaEdit = document.querySelector('#label-fecha-edit');
 const fechaEditList =  document.querySelector('#fecha-lista-edit');
+
 
 const erroresListEdit = document.querySelector('#errores-ul');
 
@@ -18,18 +21,18 @@ btnListaEditValidar.addEventListener('click',()=>{
 
     let nombre = nombreProEdit.value;
     let cantidad = cantidadEdit.value;
-    let cantidadMin = cantidadMinEdit.value;
+    //let cantidadMin = cantidadMinEdit.value;
     let fechaCaducidad = fechaEditList.value;
 
-    if((nombre=='')||(cantidad=='')||(cantidadMin=='')||(fechaCaducidad=='')){
+    if((nombre=='')||(cantidad=='')/*(cantidadMin=='')||*/){
         liListaEdit.innerHTML += '<li>Algunos campos estan vacios</li>';
         isOk = false;
     }
 
-    if(cantidad == 0){
+    /*if(cantidad == 0){
         liListaEdit.innerHTML += '<li>La cantidad no puede ser de 0</li>';
         isOk = false;
-    }
+    }*/
 
     if(!isOk){
         erroresListEdit.appendChild(liListaEdit);
@@ -46,5 +49,18 @@ btnListaEditValidar.addEventListener('click',()=>{
 window.addEventListener('click',e=>{
     if(e.target.classList[0]==='container-error-signup'){
         containerErrorSignup.classList.add('ocultar-signup');
+    }
+});
+
+
+fechaSelectLista.addEventListener('change',()=>{
+    const valorCategoria = fechaSelectLista.value;
+
+    if(valorCategoria == 'Producto procesado' || valorCategoria == 'Lacteos' || valorCategoria=='Embutidos'){
+        labelFechaEdit.classList.remove('ocultar-fecha');
+        labelCategoria.classList.remove('ocultar-fecha');
+    }else{
+        fechaEditList.classList.add('ocultar-fecha');
+        fechaEditList.classList.add('ocultar-fecha');
     }
 });

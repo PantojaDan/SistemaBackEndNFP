@@ -7,13 +7,19 @@
                 <input type="text" name="nombre_pro" value="{{nombre_pro}}" id="nombre_pro_edit">
     
                 <label for="cantidad">Cantidad:</label>
-                <input type="number" name="cantidad" value="{{cantidad}}" min="1" id="cantidad_edit">
+                <input type="number" name="cantidad" value="{{cantidad}}" min="0" id="cantidad_edit">
 
-                <label for="cantidad_min">Cantidad minima:</label>
-                <input type="number" name="cantidad_min" value="{{cantidad_min}}" min="1" id="cantidad_min_edit">
-                
-                <label for="fecha_caducidad">Fecha caducidad:</label>
-                <input type="date" name="fecha_caducidad" id="fecha-lista-edit" value="{{fecha_caducidad}}">
+                <!--<label for="cantidad_min">Cantidad minima:</label>
+                <input type="number" name="cantidad_min" value="{{cantidad_min}}" min="1" id="cantidad_min_edit">-->
+                <div class="container-categoria">
+                    <label for="categoria">Categoria:</label>
+                    <select name="categoria" id="categoria-edit-lista">
+                        <option value="{{categoria}}">{{categoria}}</option>
+                    </select>
+                </div>
+
+                <label class="ocultar-fecha" for="fecha_caducidad" id="label-fecha-edit">Fecha caducidad:</label>
+                <input class="ocultar-fecha" type="date" name="fecha_caducidad" id="fecha-lista-edit" value="{{fecha_caducidad}}">
 
                 <div id="botones-edit-pro-form">
                     <span id="button-lista-validar">Validar</span>

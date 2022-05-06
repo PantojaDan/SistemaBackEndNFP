@@ -21,15 +21,15 @@ btnValidarEditCocina.addEventListener('click',()=>{
     let cantidadMin = cantidadMinEditCocina.value;
     let fechaCaducidad = fechaEditCocina.value;
 
-    if((nombre=='')||(cantidad=='')||(cantidadMin=='')||(fechaCaducidad=='')){
+    if((nombre=='')||(cantidad=='')||(cantidadMin=='')/*||(fechaCaducidad=='')*/){
         liProEditCocina.innerHTML += '<li>Algunos campos estan vacios</li>';
         isOk = false;
     }
 
-    if(cantidad == 0){
+    /*if(cantidad == 0){
         liProEditCocina.innerHTML += '<li>La cantidad no puede ser de 0</li>';
         isOk = false;
-    }
+    }*/
 
     if(!isOk){
         erroresCocinaEdit.appendChild(liProEditCocina);

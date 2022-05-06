@@ -6,8 +6,13 @@ let liCocina = document.createElement('li');
 const nombreProCocina = document.querySelector('#nombre_pro_cocina');
 const cantidadCocina = document.querySelector('#cantidad_cocina');
 const cantidadMinimaCocina = document.querySelector('#cantidad_minima_cocina');
-const fechaCaducidadCocina = document.querySelector('#fecha_caducidad_cocina');
+//const fechaCaducidadCocina = document.querySelector('#fecha_caducidad_cocina');
 const medidas = document.querySelector('#medidas');
+
+const categoriaMiCocina = document.querySelector('#categoriaCocina');
+const fechaCocinaLabel = document.querySelector('#fechaCocinaLabel');
+const fechaCaducidadCocina = document.querySelector('#fecha_caducidad_cocina');
+
 
 const erroresUlCocina = document.querySelector('#errores-ul');
 
@@ -22,9 +27,9 @@ validarBtn.addEventListener('click',()=>{
     let cantidad = cantidadCocina.value;
     let medida = medidas.value;
     let cantidadMin = cantidadMinimaCocina.value;
-    let fechaCaducidad = fechaCaducidadCocina.value;
+    //let fechaCaducidad = fechaCaducidadCocina.value;
 
-    if((nombre=='')||(cantidad=='')||(cantidadMin=='')||(fechaCaducidad=='') || (medida=='')){
+    if((nombre=='')||(cantidad=='')||(cantidadMin=='')||/*(fechaCaducidad=='') || */(medida=='')){
         liCocina.innerHTML += '<li>Algunos campos estan vacios</li>';
         isOk = false;
     }
@@ -49,5 +54,17 @@ validarBtn.addEventListener('click',()=>{
 window.addEventListener('click',e=>{
     if(e.target.classList[0]==='container-error-signup'){
         containerErrorSignup.classList.add('ocultar-signup');
+    }
+});
+
+categoriaMiCocina.addEventListener('change',()=>{
+    const valorCategoria = categoriaMiCocina.value;
+
+    if(valorCategoria == 'Producto procesado' || valorCategoria == 'Lacteos' || valorCategoria=='Embutidos'){
+        fechaCocinaLabel.classList.remove('ocultar-fecha');
+        fechaCaducidadCocina.classList.remove('ocultar-fecha');
+    }else{
+        fechaCocinaLabel.classList.add('ocultar-fecha');
+        fechaCaducidadCocina.classList.add('ocultar-fecha');
     }
 });

@@ -27,9 +27,19 @@
 
                 <!--<label for="cantidad_min">Cantidad minima:</label>
                 <input type="number" name="cantidad_min" min="1" id="cantidadMinLista">-->
+                <div class="container-categoria">
+                    <label for="categoria">Categoria:</label>
+                    <select name="categoria" id="categoria">
+                        <option value="Frutas y verduras">Frutas y verduras</option>
+                        <option value="Producto procesado">Producto procesado</option>
+                        <option value="Lacteos">Lacteos</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Embutidos">Embutidos</option>
+                    </select>
+                </div>
 
-                <label for="fecha_caducidad" class="ocultar-fecha">Fecha caducidad:</label>
-                <input type="date" name="fecha_caducidad" id="fecha-lista">
+                <label id="label-categoria" for="fecha_caducidad" class="ocultar-fecha">Fecha caducidad:</label>
+                <input type="date" name="fecha_caducidad" id="fecha-lista" class="ocultar-fecha">
 
                 <div id="botones-lista-form">
                     <span id="validar-form-lista">Validar</span>

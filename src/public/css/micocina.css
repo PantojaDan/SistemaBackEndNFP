@@ -24,7 +24,7 @@ body{
 
 .form-mi-cocina{
     width: 450px;
-    height: 490px;
+    height: 520px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@ body{
 
 .form-ingresar-producto{
     width: 95%;
-    height: 95%;
+    height: 100%;
     position: relative;
     background-color: white;
     display: flex;
@@ -60,6 +60,7 @@ body{
 #cantidades-micocina{
     display: flex;
     flex-direction: row;
+    align-self: center;
 }
 #cantidades-micocina select{
     border: 0;
@@ -425,3 +426,25 @@ body{
     border: none;
 }
 /*Fin. Modal notificacion*/
+
+
+
+/*Select Mi Cocina No hay edicion*/
+#categoriaCocina{
+    border: 0;
+    margin-left: 3rem;
+    color: #7f7f7f;
+    font-size: 1.2rem;
+    outline: none;
+    padding: 0.5rem;
+}
+#categoriaCocina > option{
+    border: 0;
+}
+
+
+#fechaCocinaLabel{
+    margin-top: 2.5rem;
+}
+
+/*Select Mi Cocina Np hay edicion*/

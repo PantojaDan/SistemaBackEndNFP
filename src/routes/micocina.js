@@ -77,6 +77,8 @@ const verificarFechas = function(productos,phone){
 router.get('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
     
+    let conFecha;
+
     let productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]);
     let user = await pool.query('SELECT *FROM inventario WHERE id_inventario = ?',[id_inventario]);
     const {id_usuario} = user[0];
@@ -96,6 +98,8 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
 
     productos = await pool.query('SELECT *FROM producto WHERE id_inventario = ?',[id_inventario]); 
 
+    conFecha = await pool.query('SELECT *FROM producto WHERE id_inventario = ? and categoria != ? and categoria != ?',[id_inventario,'Frutas y verduras','Carnes']);
+    
     if(notificar || !notificar){
         
         setInterval(function(){
@@ -106,7 +110,7 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
             }
 
             if(notificar){
-                verificarFechas(productos,telefono);
+                verificarFechas(conFecha,telefono);
             }
 
         }, 10000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
@@ -119,13 +123,14 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
 
 router.post('/micocina/:id_inventario',async(req,res)=>{
     const {id_inventario} = req.params;
-    const {nombre_pro,cantidad_min,cantidad,medida,fecha_caducidad} = req.body;
+    const {nombre_pro,cantidad_min,cantidad,medida,categoria,fecha_caducidad} = req.body;
 
     const nuevoPro = {
         nombre_pro,
         cantidad_min,
         cantidad,
         medida,
+        categoria,
         fecha_caducidad,
         id_inventario
     };
