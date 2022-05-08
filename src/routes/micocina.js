@@ -8,7 +8,8 @@ const router = express.Router();//Solo especificamos que queremos su modulo llam
 const accountSid = process.env.ACCOUNT_SID;//IMPORTAMOS EL ACCOUNTSID OBTENIDO DE TWILIO
 const authToken = process.env.AUTH_TOKEN;//IMPORTAMOS EL AUTHTOKEN OBTENIDO DE TWILIO
 
-const client =  require('twilio')('ACf78b8c7adbc2fd05bd969a81a34859d9', '26e9e420fea488e06eda1c695c94d7a7');//NOS CONECTAMSO A TWILIO*/
+
+const client =  require('twilio')(accountSid, authToken);//NOS CONECTAMSO A TWILIO*/
 //const client = require('twilio')(accountSid,authToken);
 
 var notificar;
