@@ -10,12 +10,32 @@
         </div>
     </div>
 
+
+    <div id="modal-config" class="ocultar-conf">
+        <div id="options-config">
+            <i class="fa-solid fa-gear config-modal"></i>
+            
+            <form action="/dashboard/actualizar/numero/{{id_usuario}}" method="post" class="form-set-number ocultar-set">
+                <input type="text" placeholder="Numero de teléfono" name="numeroActualizado">
+                <button>Establecer</button>
+            </form>
+
+            <form action="/dashboard/eliminar/cuenta/{{id_usuario}}" method="post" class="form-delete-account ocultar-set">
+                <span>¿Estas seguro?</span>
+                <button>Si</button>
+            </form>
+
+            <div id="buttons-config">
+                <button id="actualizar-num">Actualizar numero</button>
+                <button id="eliminar-cuenta">Eliminar cuenta</button>
+            </div>
+        </div>
+    </div>
+
     <div class="menu-dashboard hide-menu">
         <ul id="nav-dash">
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Privacidad</a></li>
-            <li><a href="#">Soporte</a></li>
             <li id="agregar-lista"><a href="#">Agregar lista</a></li>
+            <li id="configuracion"><a href="#">Configuración<i class="fa-solid fa-gear config"></i></a></li>
         </ul>
     </div>
     <main class="container-dashboard">
@@ -81,9 +101,3 @@
         </section>
 
     </main>
-
-
-    <footer class="footer">
-        <span>NutryFoodPantry</span>
-        <div class="logo-footer"><img src="./img/N.png" alt="logo"></div>
-    </footer>

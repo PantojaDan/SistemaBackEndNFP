@@ -88,6 +88,7 @@
     margin: 0;
     cursor: pointer;
     transition: all ease-in 0.2s;
+    border-radius: 5px;
 }
 #form #button button:hover{
     background-color: white;
@@ -114,4 +115,72 @@
 #registro-cuenta > a:hover{
     background-color: white;
     color: var(--color-primary);
+}
+
+@media screen and (max-width:520px){
+    #main-signin > h1{
+        margin-top: 5rem;
+        font-size: 1.4rem;
+    }
+
+    .container-login{
+        width: 80%;
+        height: 250px;
+    }
+
+    .container-login h3{
+        font-size: 1rem;
+    }
+
+    #form{
+        font-size: 0.8rem;
+    }
+
+    #form input{
+        font-size: 0.8rem;
+        width: 60%;
+    }
+
+    .images > img{
+        right: 1rem;
+        top: 4rem;
+    }
+
+    #form #button button{
+        font-size: 0.8rem;
+        width: 80px;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width:360px){
+    .container-login{
+        width: 90%;
+    }
+    .container-login h3{
+        font-size: 0.8rem;
+    }
+    .images{
+        display: none;
+    }
+    #button{
+        justify-content: center;
+    }
+    #form input{
+        width: 100%;
+        text-align: center;
+    }
+    #form label{
+        text-align: center;
+    }
+    #main-signin > h1{
+        font-size: 0.8rem;
+    } 
+    #registro-cuenta{
+        font-size: 0.6rem;
+    }  
+    #registro-cuenta a{
+        padding: 0.1rem;
+        font-size: 0.6rem;
+    }
 }

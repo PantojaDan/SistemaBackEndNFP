@@ -1,10 +1,12 @@
 const nombreUsSignup = document.querySelector('#nombreUsSignup'); 
 const nombreSignup = document.querySelector('#nombreSignup');
 const apSignup = document.querySelector('#apSignup');
-const amSignup = document.querySelector('#apSignup');
+const amSignup = document.querySelector('#amSignup');
 const passwordSignup = document.querySelector('#passwordSignup');
 const passwordConfirmSignup = document.querySelector('#passwordConfirmSignup');
 const telefono =  document.querySelector('#telefonoSignup');
+
+const regexTelefono = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
 
 const containerErrorSignup = document.querySelector('.container-error-signup');
 const btnVerificarForm = document.querySelector('#verificar-form-signup');
@@ -41,6 +43,11 @@ btnVerificarForm.addEventListener('click',()=>{
         isOk = false;
     }
 
+    if(!regexTelefono.test(telefonoSignup)){
+        li.innerHTML += '<li>Numero de telefono incorrecto</li>';
+        isOk = false;
+    }
+
     if(!isOk){
         erroresUl.appendChild(li);
         containerErrorSignup.classList.remove('ocultar-signup');
@@ -49,6 +56,14 @@ btnVerificarForm.addEventListener('click',()=>{
     if(isOk){
         btnVerificarForm.classList.add('ocultar-btn-verificar');
         btnRegistrar.classList.remove('ocultar-btn-signup');
+        
+        nombreUsSignup.readOnly = true; 
+        nombreSignup.readOnly = true;
+        apSignup.readOnly = true;
+        amSignup.readOnly = true;
+        passwordSignup.readOnly = true;
+        passwordConfirmSignup.readOnly = true;
+        telefono.readOnly = true;
     }
 });
 

@@ -21,6 +21,23 @@
     background-color: white;
     padding: 1rem;
 }
+
+@media screen and (max-width: 350px){
+    .mensage-operacion #mnsg{
+        width: 170px;
+        height: 170px;
+    }
+
+    .mensage-operacion #mnsg i{
+        font-size: 2rem !important;
+    }
+
+    .mensage-operacion #mnsg b{
+        font-size: 0.7rem;
+        text-align: center;
+    }
+}
+
 .mensage-operacion #mnsg i{
     font-size: 7rem;
     color: green;
@@ -45,6 +62,18 @@
     border-radius: 5px;
     background-color: white;
     padding: 1rem;
+}
+@media screen and (max-width: 450px){
+    .mensage-operacion #mnsg-whatsapp{
+        width: 200px;
+        height: 100px;
+    }
+    .mensage-operacion #mnsg-whatsapp > i{
+        font-size: 2rem !important;
+    }
+    .mensage-operacion #mnsg-whatsapp b{
+        font-size: 0.8rem !important;
+    }
 }
 .mensage-operacion #mnsg-whatsapp i{
     font-size: 7rem;
@@ -122,6 +151,18 @@
     background-color: white;
     padding: 1rem;
 }
+@media screen and (max-width: 450px){
+    .mensage-operacion #mnsg-bienvenida{
+        width: 200px;
+        height: 100px;
+    }
+    .mensage-operacion #mnsg-bienvenida > i{
+        font-size: 2rem !important;
+    }
+    .mensage-operacion #mnsg-bienvenida b{
+        font-size: 0.8rem !important;
+    }
+}
 .mensage-operacion #mnsg-bienvenida > i{
     font-size: 7rem;
     color: rgb(255, 212, 22);
@@ -147,6 +188,18 @@
     border-radius: 5px;
     background-color: white;
     padding: 1rem;
+}
+@media screen and (max-width: 450px){
+    .mensage-operacion #mnsg-incorrecto{
+        width: 200px;
+        height: 100px;
+    }
+    .mensage-operacion #mnsg-incorrecto > i{
+        font-size: 2rem !important;
+    }
+    .mensage-operacion #incorrecto b{
+        font-size: 0.8rem !important;
+    }
 }
 .mensage-operacion #mnsg-incorrecto > i{
     font-size: 7rem;

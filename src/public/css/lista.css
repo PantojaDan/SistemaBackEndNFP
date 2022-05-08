@@ -434,3 +434,63 @@ body{
 #label-categoria{
     margin-top: 2.5rem;
 }
+
+@media screen and (max-width: 400px) {
+    #header-lista{
+        flex-direction: column;
+        align-items: center;
+    }
+    #options-lista{
+        flex-direction: column;
+    }
+    #options-lista h1{
+        margin: 0;
+    }
+    .productos-lista table{
+        padding: 0.2rem;
+    }
+    .productos-lista table th{
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+    .mnsg-add-pro-none b{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    #validar-form-lista{
+        font-size: 0.7rem;
+        padding: 0.2rem;
+        width: 70px;
+    }
+    #button-lista{
+        font-size: 0.7rem;
+        padding: 0.2rem;
+        width: 70px;
+    }
+    #remover-pro{
+        margin: 0;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 530px){
+    .form-lista-add{
+        width: 75%;
+        height: 85%;
+        padding: 0.5rem;
+    }
+    .form-lista-add  label{
+        font-size: 0.8rem;
+    }
+    .form-lista-add  input{
+        padding: 0 0.2rem 0.2rem 0;
+        font-size: 0.8rem;
+    }
+    #medidasLista{
+        font-size: 0.8rem;
+    }
+    #categoria{
+        font-size: 0.8rem;
+        margin-left: 1rem;
+    }
+}

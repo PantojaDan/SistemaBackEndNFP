@@ -11,12 +11,13 @@ const {estaLogeado} = require('../lib/auth');//Importamos la funcion del archivo
 router.get('/dashboard',estaLogeado,async(req,res)=>{//Creando una ruta llamada /dashboard para mostrar la interfaz metodo get
     const inventarios = await pool.query('SELECT * FROM inventario WHERE id_usuario = ?',[req.user.id_usuario]);
     const miCocina = await pool.query('SELECT * FROM inventario WHERE nombre_inv = ? and id_usuario = ?',['Mi Cocina',req.user.id_usuario]);//Seleccionamos el invenatrio comun Mi Cocina
-    
+    const id_usuario = req.user.id_usuario;
+
     listas = inventarios.filter(inventario => inventario.nombre_inv != "Mi Cocina");
 
     console.log(listas);
 
-    res.render('dashboard/dashboard',{listas, miCocina});
+    res.render('dashboard/dashboard',{listas, miCocina,id_usuario});
 });
 
 
@@ -151,5 +152,28 @@ router.get('/dashboard/lista/remover/productos/:id_inventario',async(req,res)=>{
     req.flash('success','Productos removidos a Mi Cocina');
     res.redirect('/dashboard/lista/'+id_inventario);
 })
+
+
+
+/*Cuando actualizamos el numero */
+router.post('/dashboard/actualizar/numero/:id_usuario',async(req,res)=>{
+    let {id_usuario} = req.params;
+    const {numeroActualizado} = req.body;
+
+    await pool.query('UPDATE usuarios set telefono = ? WHERE id_usuario = ?',[numeroActualizado,id_usuario]);
+    req.flash('success','Numero actualizado');
+    res.redirect('/dashboard');
+});
+
+router.post('/dashboard/eliminar/cuenta/:id_usuario',async(req, res)=>{
+    let {id_usuario} = req.params;
+
+    req.flash('incorrecto','Cuenta eliminada');
+
+    req.logOut();
+    res.redirect('/signin');
+
+    await pool.query('DELETE FROM usuarios WHERE id_usuario = ?',[id_usuario]);
+});
 
 module.exports = router;//Exportando el router

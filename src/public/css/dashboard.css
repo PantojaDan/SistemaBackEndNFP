@@ -1,6 +1,7 @@
 .container-dashboard{
     width: 100vw;
     height: 100vh;
+    position: relative;
     background-color: #e7ebda;
 }
 
@@ -77,6 +78,7 @@
 /**Inicio. Estilos contenedor inventarios*/
 #section-inv{
     width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -212,6 +214,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 3;
     background-color: #18171c;
     transition: all ease-in-out 0.3s;
 }
@@ -359,3 +362,232 @@
     background-color: transparent;
 }
 /*Fin.Estilos mensaje no inventarios*/
+
+
+
+
+
+/*Inicio. Configuración*/
+.config{
+    margin-left: 0.2rem;
+}
+.ocultar-conf{
+    display: none !important;
+}
+#modal-config{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#options-config{
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.config-modal{
+    color: #7f7f7f;
+    font-size: 2.5rem;
+}
+#buttons-config{
+    margin-top: 1rem;
+}
+#buttons-config > button{
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+#actualizar-num{
+    background-color: rgba(59, 102, 230, 1);
+    color: white;
+    margin-right: 0.5rem;
+    transition: all ease-in 0.3s;
+}
+#eliminar-cuenta{
+    background-color: rgba(179, 0, 0, 1);
+    color: white;
+    margin-left: 5px;
+    transition: all ease-in 0.3s;
+}
+#actualizar-num:hover{
+    background-color: rgba(59, 102, 230, 0.9);
+}
+#eliminar-cuenta:hover{
+    background-color: rgba(179, 0, 0, 0.9);
+}
+
+.ocultar-set{
+    display: none !important;
+}
+.ocultar-buttons-conf{
+    display: none !important;
+}
+.form-set-number{
+    display: flex;
+    flex-direction: column;
+}
+.form-set-number input{
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: #7f7f7f;
+    border: none;
+    outline: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.form-set-number button{
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+
+.form-delete-account{
+    display: flex;
+    flex-direction: column;
+}
+.form-delete-account span{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.form-delete-account button{
+    color: white;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+/*Fin. Configuración*/
+
+
+
+
+/*Responsive*/
+
+@media screen and (max-width: 1200px){
+    #section-dashboard{
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #section-dashboard{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    #section-dashboard{
+        width: 35%;
+    }
+    #header-dashboard > h1{
+        font-size: 1rem;
+        letter-spacing: 0.3rem;
+    }
+    
+}
+
+@media screen and (max-width: 580px){
+    #section-dashboard{
+        width: 45%;
+    }
+    #header-dashboard > h1{
+        display: none;
+    }
+    #titulo-inventarios{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .menu-hamburguer-dash{
+        margin: 0;
+    }
+    #section-dashboard{
+        width: 80%;
+    }
+    #section-dashboard b{
+        font-size: 0.8rem;
+    }
+    .user-dashboard{
+        font-size: 1.5rem;
+    }
+    .logout-dashboard{
+        font-size: 1rem;
+    }
+    .menu-hamburguer-dash{
+        font-size: 1.1rem;
+    }
+    #titulo-inventarios{
+        font-size: 1rem;
+    }
+    .menu-dashboard{
+        width: 100%;
+        height: 90%;
+    }
+    #buttons-config{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #buttons-config button{
+        margin: 0;
+    }
+    #actualizar-num{
+        margin-bottom: 1rem !important;
+    }
+    .form-set-number input{
+        padding: 0.2rem;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .form-set-number button{
+        padding: 0.2rem 0.5rem;
+    }
+}
+@media screen and (max-width: 300px){
+    .form-inv{
+        font-size: 0.8rem;
+    }
+    .form-inv form > span{
+        font-size: 0.8rem;
+        margin: 0.2rem;
+    }
+    
+    .form-inv label{
+        font-size: 0.8rem;
+    }
+    .form-inv input{
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+    .form-inv button{
+        width: 50%;
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 210px){
+    .inventario{
+        width: 140px;
+        height: 180px;
+    }
+}

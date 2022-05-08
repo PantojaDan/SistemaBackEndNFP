@@ -188,3 +188,76 @@
     display: none;
 }
 /*Fin. Estilos error signup*/
+
+
+@media screen and (max-width:1300px){
+    #form-signup{
+        width: 35%;
+    }
+}
+
+@media screen and (max-width:1100px){
+    #form-signup{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:1000px){
+    #form-signup{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:770px){
+    #form-signup{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:600px){
+    #form-signup{
+        width: 80%;
+    }
+    .separator label{
+        font-size: 0.8rem;
+    }
+    .separator input{
+        font-size: 0.8rem;
+    }
+    .passwords section{
+        font-size: 0.8rem;
+    }
+    #hero-form p{
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+    #verificar-form-signup{
+        width: 30%;
+        height: 50%;
+        font-size: 0.8rem;
+    }
+    #actions > button{
+        width: 30%;
+        height: 50%;
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 400px){
+    #image-hero{
+        width: 45px;
+        height: 40px;
+    }
+    #image-hero img{
+        width: 30px;
+        height: 30px;
+    }
+    #form-signup{
+        width: 95%;
+    }
+    .error-form-signup i{
+        font-size: 3rem;
+    }
+    #errores-ul{
+        font-size: 0.7rem;
+    }
+}
