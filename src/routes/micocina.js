@@ -113,7 +113,7 @@ router.get('/micocina/:id_inventario',async(req,res)=>{
                 verificarFechas(conFecha,telefono);
             }
 
-        }, 10000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
+        }, 15000);//Puedo cambiar el tiempo aqui es de 5 segundos puedo ajustarlo para un dia
     
     }
 
